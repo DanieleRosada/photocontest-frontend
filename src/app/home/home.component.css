@@ -1,0 +1,28 @@
+h1{
+    color:white;
+    float: left;
+}
+.logout {
+   float: right;
+   color:white;
+   font-size:48px;
+   -webkit-appearance: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+label{
+    margin-bottom: 0px;
+}
+.card-body{
+    color: #fff;
+}
+.album{
+    position: relative;
+    padding-top: 5%;
+}
+.card{
+    color: #fff;
+    width: 18rem;
+}

@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Photo Contest</h1>
+            <i type="submit" class="fas fas fa-sign-out-alt logout" (click)="logout()"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Insert url" aria-label="Insert url" value={{fileName}}>
+            <div class="input-group-append">
+                <label for="file-upload" class="btn btn-outline-secondary login_btn">
+                    <i class="fa fa-cloud-upload"></i> Browser
+                </label>
+                <input id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />
+                <button class="btn btn-outline-secondary login_btn" type="submit" (click)="upload()">Upload</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 album" *ngFor="let data of arrayPhoto">
+            <div class="card" *ngIf="vote">
+                <img class="card-img-top" src={{data.url}}>
+                <div class="card-body">
+                    {{data.ID_user}}
+                    {{data.mvotes}}
+                    {{data.nvotes}}
+                </div>
+            </div>
+            <div class="card" *ngIf="!vote">
+                <img class="card-img-top" src={{data.url}}>
+                <div class="card-body">
+                    {{data.ID_user}}
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Select vote
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" >1</a>
+                            <a class="dropdown-item" >2</a>
+                            <a class="dropdown-item" >3</a>
+                            <a class="dropdown-item" >4</a>
+                            <a class="dropdown-item" >5</a>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-warning">Vote</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
