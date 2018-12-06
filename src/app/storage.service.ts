@@ -19,7 +19,7 @@ export class StorageService {
   }
 
   saveToken(token) {
-    sessionStorage.setItem('token', token);
+    sessionStorage.setItem('token', JSON.stringify(token));
     this.getToken();
   }
 
@@ -37,8 +37,12 @@ export class StorageService {
     sessionStorage.clear();
   }
 
+  vote(vote,id_photo,id_user){
+    return this.http.post(this.base_url + '/vote', { vote,id_photo,id_user });
+  }
+
   async load(){
-    return await fetch(this.base_url + '/load', this.options).then(res => res.json());
+    return await fetch(this.base_url + '/home', this.options).then(res => res.json());
   }
 
 }

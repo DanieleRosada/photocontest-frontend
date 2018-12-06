@@ -19,35 +19,25 @@
     </div>
     <div class="row">
         <div class="col-lg-4 album" *ngFor="let data of arrayPhoto">
-            <div class="card" *ngIf="vote">
+            <div class="card">
                 <img class="card-img-top" src={{data.url}}>
-                <div class="card-body">
+                <div class="card-body" *ngIf="like">
+                  
                     {{data.ID_user}}
                     {{data.mvotes}}
                     {{data.nvotes}}
                 </div>
-            </div>
-            <div class="card" *ngIf="!vote">
-                <img class="card-img-top" src={{data.url}}>
-                <div class="card-body">
+                <div class="card-body" *ngIf="!like">
                     {{data.ID_user}}
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Select vote
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" >1</a>
-                            <a class="dropdown-item" >2</a>
-                            <a class="dropdown-item" >3</a>
-                            <a class="dropdown-item" >4</a>
-                            <a class="dropdown-item" >5</a>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-warning">Vote</button>
+                    <form #likeForm="ngForm" (ngSubmit)="votePhoto(likeForm);">
+                        <select class="form-control" [(ngModel)]="vote" name="vote" required>
+                            <option *ngFor="let vote of votes" value="{{vote.value}}">{{vote.value}}</option>
+                        </select>
+                        <input type="hidden" name="id" [(ngModel)]="data.ID"/>
+                        <button type="submit" class="btn btn-warning">Vote</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

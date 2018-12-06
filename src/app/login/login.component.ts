@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
       this.storage
         .login(data.value.username, data.value.password)
         .subscribe(data => {
+          console.log("loginfunction",data)
           this.storage.saveToken(data); //.token
           this.router.navigate(['/home']);
           this.loginAlert = null;

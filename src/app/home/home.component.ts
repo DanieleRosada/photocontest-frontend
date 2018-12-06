@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../storage.service';
 import { ViewChild } from '@angular/core';
-
+import { NgForm } from '@angular/forms';
 @ViewChild('fileInput')
 @Component({
   selector: 'app-home',
@@ -12,10 +12,13 @@ import { ViewChild } from '@angular/core';
 export class HomeComponent implements OnInit {
   file: File;
   fileName: string = "";
-  arrayPhoto;
-  vote: boolean = false;
+  arrayPhoto = null;
+  vote;
+  votes = [{ "value": 1 }, { "value": 2 }, { "value": 3 }, { "value": 4 }, { "value": 5 }];
+  like;
+  user = JSON.parse(sessionStorage.getItem('token'));
   constructor(private storage: StorageService, private router: Router) {
-    if (!sessionStorage.getItem('token')) this.router.navigateByUrl('/login');
+    if (!this.user) this.router.navigateByUrl('/login');
     this.arrayPhoto = this.loadPhoto();
   }
   ngOnInit() {
@@ -43,5 +46,17 @@ export class HomeComponent implements OnInit {
   onFileChange(event) {
     this.file = event.target.files[0];
     this.fileName = this.file.name;
+  }
+
+  votePhoto(data: NgForm) {
+    if (data.valid) {
+      this.storage.vote(data.value.vote, data.value.id, this.user.id).subscribe(data => {
+          this.storage.saveToken(data); 
+          this.router.navigate(['/home']);
+        }, err => {
+          console.log(err)
+        });
+
+    }
   }
 }
