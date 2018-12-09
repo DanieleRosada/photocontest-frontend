@@ -26,3 +26,6 @@ label{
     color: #fff;
     width: 18rem;
 }
+.pointer{
+    cursor: pointer;
+}

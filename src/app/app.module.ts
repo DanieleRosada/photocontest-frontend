@@ -9,10 +9,12 @@ import { SigUpComponent } from './sig-up/sig-up.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
 
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
+  { path: 'photo/:id', component: PhotoDetailComponent },
   { path: 'login', component: LoginComponent},
   { path: 'sigup', component: SigUpComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -23,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SigUpComponent
+    SigUpComponent,
+    PhotoDetailComponent
   ],
   imports: [
     BrowserModule,

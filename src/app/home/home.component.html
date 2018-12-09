@@ -20,20 +20,21 @@
     <div class="row">
         <div class="col-lg-4 album" *ngFor="let data of arrayPhoto">
             <div class="card">
-                <img class="card-img-top" src={{data.url}}>
-                <div class="card-body" *ngIf="like">
-                  
-                    {{data.ID_user}}
-                    {{data.mvotes}}
-                    {{data.nvotes}}
+                <a class="pointer" (click)="ViewphotoDetail(data.ID)" target="_blank">
+                    <img class="card-img-top" src={{data.url}}>
+                </a>
+                <div class="card-body" *ngIf="data.voteiduser == this.user.id">
+                    <p>User: {{data.username}}</p>
+                    <p>Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{data.sumvotes/data.nvotes}}</p>
+                    <p>Users voted: <i class="fa fa-users" aria-hidden="true"></i>{{data.nvotes}}</p>
                 </div>
-                <div class="card-body" *ngIf="!like">
-                    {{data.ID_user}}
+                <div class="card-body" *ngIf="data.voteiduser != this.user.id">
+                    <p>User: {{data.username}}</p>
                     <form #likeForm="ngForm" (ngSubmit)="votePhoto(likeForm);">
-                        <select class="form-control" [(ngModel)]="vote" name="vote" required>
+                        <select class="form-control" [(ngModel)]="data.vote" name="vote" required>
                             <option *ngFor="let vote of votes" value="{{vote.value}}">{{vote.value}}</option>
                         </select>
-                        <input type="hidden" name="id" [(ngModel)]="data.ID"/>
+                        <input type="hidden" name="id" [(ngModel)]="data.ID" />
                         <button type="submit" class="btn btn-warning">Vote</button>
                     </form>
                 </div>

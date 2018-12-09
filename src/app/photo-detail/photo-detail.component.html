@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" *ngFor="let data of photo">
+      <h2>User: {{data.username}}</h2>
+      <img class="card-img-top" src={{data.url}} width="100%">
+      <p>Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{data.sumvotes/data.nvotes}}</p>
+      <p>Users voted: <i class="fa fa-users" aria-hidden="true"></i>{{data.nvotes}}</p>
+      <button class="btn btn-outline-secondary login_btn" type="submit" (click)="back()">Home</button>
+    </div>
+  </div>
+</div>
