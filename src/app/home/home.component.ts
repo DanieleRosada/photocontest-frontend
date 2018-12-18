@@ -11,16 +11,22 @@ import { NgForm } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   file: File;
-  fileName: string = "";
-  arrayPhoto = null;
-  vote;
-  votes = [{"value": 1 }, { "value": 2 }, { "value": 3 }, { "value": 4 }, { "value": 5 }];
+  fileName: string;
+  arrayPhoto;
+  vote: number;
+  votes = [{ "value": 1 }, { "value": 2 }, { "value": 3 }, { "value": 4 }, { "value": 5 }];
   user = JSON.parse(sessionStorage.getItem('token'));
+  uploadDisable: boolean = false;
   constructor(private storage: StorageService, private router: Router) {
+    console.log(this.user);
     if (!this.user) this.router.navigateByUrl('/login');
     this.loadPhoto();
   }
-  ngOnInit() {
+
+  ngOnInit() { }
+
+  loadPhoto() {
+    this.storage.load(this.user.id).then(res => this.arrayPhoto = res);
   }
 
   logout() {
@@ -28,39 +34,38 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  upload() {
+  onFileChange(event) {
+    this.uploadDisable = false;
+    this.file = event.target.files[0];
+    this.fileName = this.file.name;
+  }
+
+  uploadPhoto() {
+    this.uploadDisable = true;
     this.storage.upload(this.file, this.user.id)
       .subscribe(() => {
         this.loadPhoto();
       }, err => {
         console.log("err", err)
       });
-
   }
 
-  loadPhoto() {
-    this.storage.load(this.user.id).then(res => this.arrayPhoto = res);
-  }
-
-  onFileChange(event) {
-    this.file = event.target.files[0];
-    this.fileName = this.file.name;
-  }
-
-  votePhoto(data: NgForm) {
+  votePhoto(data: NgForm, element) {
+    element.isDisabled=true;
     if (data.valid) {
       this.storage.vote(data.value.vote, data.value.id, this.user.id).subscribe(data => {
-          this.storage.saveToken(data); 
-          this.loadPhoto();
-        }, err => {
-          console.log(err)
-        });
-   }
-}
+        this.storage.saveToken(data);
+        this.loadPhoto();
+      }, err => {
+        console.log(err)
+      });
+    }
+  }
+
+  photoDetail(photo_id: number) {
+    let url: string = "/photo/" + photo_id;
+    this.router.navigateByUrl(url);
+  }
 
 
-ViewphotoDetail(photo_id){
-  let url: string = "/photo/" + photo_id;
-  this.router.navigateByUrl(url);
-}
 }

@@ -8,6 +8,7 @@ background-size: cover;
 background-repeat: repeat-y;
 height: 100%;
 font-family: 'Numans', sans-serif;
+color: #fff;
 }
 
 .container{
@@ -69,13 +70,13 @@ margin-left: 15px;
 margin-right: 5px;
 }
 
-.login_btn{
+.yellow{
 color: black;
 background-color: #FFC312;
 width: 100px;
 }
 
-.login_btn:hover{
+.yellow:hover{
 color: black;
 background-color: white;
 }

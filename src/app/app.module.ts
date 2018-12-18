@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'photo/:id', component: PhotoDetailComponent },
   { path: 'login', component: LoginComponent},
   { path: 'sigup', component: SigUpComponent},
+  { path: 'ranking', component: RankingComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];
@@ -26,7 +28,8 @@ const routes: Routes = [
     LoginComponent,
     HomeComponent,
     SigUpComponent,
-    PhotoDetailComponent
+    PhotoDetailComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,

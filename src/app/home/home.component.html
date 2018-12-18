@@ -1,41 +1,46 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>Photo Contest</h1>
-            <i type="submit" class="fas fas fa-sign-out-alt logout" (click)="logout()"></i>
+        <div class="col-md-8">
+            <h1>Photo Contest, welcome {{this.user.username}}</h1>
+        </div>
+        <div class="col-md-4 text-right">
+            <i type="submit" class="fas fa-trophy icon" (click)="this.router.navigate(['/ranking']);"></i>
+            <i type="submit" class="fas fas fa-sign-out-alt icon" (click)="logout()"></i>
         </div>
     </div>
     <div class="row">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Insert url" aria-label="Insert url" value={{fileName}}>
-            <div class="input-group-append">
-                <label for="file-upload" class="btn btn-outline-secondary login_btn">
-                    <i class="fa fa-cloud-upload"></i> Browser
-                </label>
-                <input id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />
-                <button class="btn btn-outline-secondary login_btn" type="submit" (click)="upload()">Upload</button>
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Insert url" aria-label="Insert url" value={{fileName}}>
+                <div class="input-group-append">
+                    <label for="file-upload" class="btn btn-outline-secondary yellow">
+                        <i class="fa fa-cloud-upload"></i> Browser
+                    </label>
+                    <input id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />
+                    <button class="btn btn-outline-secondary yellow" type="submit"[disabled]="uploadDisable" (click)="uploadPhoto()">Upload</button>
+                </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4 album" *ngFor="let data of arrayPhoto">
+        <div class="col-lg-4 col-md-6 album" *ngFor="let data of arrayPhoto">
             <div class="card">
-                <a class="pointer" (click)="ViewphotoDetail(data.ID)" target="_blank">
+                <a class="pointer" (click)="photoDetail(data.ID)" target="_blank">
                     <img class="card-img-top" src={{data.url}}>
                 </a>
                 <div class="card-body" *ngIf="data.voteiduser == this.user.id">
                     <p>User: {{data.username}}</p>
-                    <p>Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{data.sumvotes/data.nvotes}}</p>
+                    <p>Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{(data.sumvotes/data.nvotes).toFixed(2)}}</p>
                     <p>Users voted: <i class="fa fa-users" aria-hidden="true"></i>{{data.nvotes}}</p>
                 </div>
                 <div class="card-body" *ngIf="data.voteiduser != this.user.id">
                     <p>User: {{data.username}}</p>
-                    <form #likeForm="ngForm" (ngSubmit)="votePhoto(likeForm);">
+                    <form #likeForm="ngForm" (ngSubmit)="votePhoto(likeForm, data);">
                         <select class="form-control" [(ngModel)]="data.vote" name="vote" required>
                             <option *ngFor="let vote of votes" value="{{vote.value}}">{{vote.value}}</option>
                         </select>
                         <input type="hidden" name="id" [(ngModel)]="data.ID" />
-                        <button type="submit" class="btn btn-warning">Vote</button>
+                        <button type="submit" class="btn btn-warning yellow center" [disabled]="data.isDisabled">Vote</button>
                     </form>
                 </div>
             </div>

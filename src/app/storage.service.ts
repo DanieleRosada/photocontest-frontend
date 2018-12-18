@@ -64,4 +64,8 @@ export class StorageService {
     }).then(res => res.json());
   }
 
+  async ranking(){
+    return await fetch(this.base_url + '/ranking').then(res => res.json());
+  }
+
 }

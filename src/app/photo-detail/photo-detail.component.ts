@@ -22,11 +22,12 @@ export class PhotoDetailComponent implements OnInit {
   }
 
   back(){
-    this.router.navigateByUrl('/home');
+    this.router.navigate(['/home']);
   }
 
   loadDetail() {
     this.storage.photo(this.id).then(res => this.photo = res);
   }
+  
 
 }

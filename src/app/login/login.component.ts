@@ -11,14 +11,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private storage: StorageService, private router: Router) { }
   loginAlert: string = null;
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
   login(data: NgForm) {
     if (data.valid) {
       this.storage
         .login(data.value.username, data.value.password)
         .subscribe(data => {
-          this.storage.saveToken(data); //.token
+          this.storage.saveToken(data);
           this.router.navigate(['/home']);
           this.loginAlert = null;
         }, err => {
