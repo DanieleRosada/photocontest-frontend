@@ -2,10 +2,15 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="left">Rating</h1>
-      <button class="btn btn-outline-secondary yellow right" type="submit" (click)="back()">Home</button>
+      <div class="right">
+        <button *ngIf="!photoUser" class="btn btn-outline-secondary yellow" type="submit" (click)="raking()">Photo</button>
+        <button *ngIf="photoUser" class="btn btn-outline-secondary yellow" type="submit" (click)="userraking()">User</button>
+        <button class="btn btn-outline-secondary yellow" type="submit" (click)="back()">Home</button>
+      </div>
     </div>
   </div>
-  <div class="row">
+  <!-- <p *ngIf="!photos || !users">{{message}}</p> -->
+  <div class="row" *ngIf="photoUser">
     <div class="col-lg-3 col-md-4 col-sm-6 album" *ngFor="let data of photos;  index as i">
       <div class="card">
         <a class="pointer" (click)="ViewphotoDetail(data.ID)" target="_blank">
@@ -17,10 +22,18 @@
           <p>Users voted: <i class="fa fa-users" aria-hidden="true"></i>{{data.nvotes}}</p>
           <p>Postion: <i class="fas fa-trophy" aria-hidden="true"></i>{{i+1}} </p>
         </div>
-        <div class="card-body" *ngIf="!photos">
-          <h1>{{message}}</h1>
-        </div>
       </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!photoUser">
+    <div class="col-lg-12" *ngFor="let user of users;  index as i">
+      <p class="center"><i class="fas fa-trophy" aria-hidden="true"></i> {{i+1}}
+      User: {{user.username}}   
+      Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{(user.sumvotes/user.nvotes).toFixed(2)}}
+      Users voted: <i class="fa fa-users" aria-hidden="true"></i>{{user.nvotes}}
+      Photos: {{user.nphotos}} 
+      </p>
     </div>
   </div>
 </div>

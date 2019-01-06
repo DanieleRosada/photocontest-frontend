@@ -35,11 +35,11 @@ export class StorageService {
   upload(file, user_id) {
     let formData: FormData = new FormData();
     formData.append('photo', file, user_id + "_" + file.name);
-    return this.http.post(this.base_url + '/upload', formData);
+    return this.http.post(this.base_url + '/upload', formData, this.options);
   }
 
   vote(vote, id_photo, id_user) {
-    return this.http.post(this.base_url + '/vote', { vote, id_photo, id_user });
+    return this.http.post(this.base_url + '/vote', { vote, id_photo, id_user }, this.options);
   }
 
   async load(userid) { 
@@ -47,9 +47,7 @@ export class StorageService {
     return await fetch(this.base_url + '/home', {
       method: "POST",
       body: form,
-      headers: {
-        "Content-Type": "application/json"
-      }
+      headers: { 'x-access-token': sessionStorage.getItem('token'), 'Content-Type': 'application/json' }
     }).then(res => res.json());
   }
 
@@ -58,14 +56,15 @@ export class StorageService {
     return await fetch(this.base_url + '/photo', {
       method: "POST",
       body: form,
-      headers: {
-        "Content-Type": "application/json"
-      }
+      headers: { 'x-access-token': sessionStorage.getItem('token'), 'Content-Type': 'application/json' }
     }).then(res => res.json());
   }
 
   async ranking(){
-    return await fetch(this.base_url + '/ranking').then(res => res.json());
+    return await fetch(this.base_url + '/ranking', this.options).then(res => res.json());
+  }
+  async userranking(){
+    return await fetch(this.base_url + '/userranking', this.options).then(res => res.json());
   }
 
 }

@@ -9,12 +9,11 @@ import { StorageService } from '../storage.service';
 })
 export class RankingComponent implements OnInit {
   photos: any = null;
-  message: string = null;
+  users: any = null;
+  message: string = "Ranking not available";
+  photoUser:boolean = true;
   constructor(private storage: StorageService, private router: Router) {
     this.raking();
-    if (this.photos) {
-      this.message = "Ranking not available";
-    }
   }
 
 
@@ -22,8 +21,13 @@ export class RankingComponent implements OnInit {
    }
 
   raking() {
+    this.photoUser = true;
     this.storage.ranking().then(res => this.photos = res);
-    console.log(this.photos);
+  }
+
+  userraking() {
+    this.photoUser = false;
+    this.storage.userranking().then(res => this.users = res);
   }
 
   ViewphotoDetail(photo_id) {
