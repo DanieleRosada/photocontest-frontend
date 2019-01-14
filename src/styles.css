@@ -3,12 +3,19 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-image: url("wallpaper/background.jpg");;
 background-size: cover;
-background-repeat: repeat-y;
+background-repeat: repeat;
 height: 100%;
 font-family: 'Numans', sans-serif;
 color: #fff;
+}
+
+.reverse{
+    -moz-transform:scaleX(-1) scaleY(-1);
+    -o-transform:scaleX(-1) scaleY(-1);
+    -webkit-transform:scaleX(-1) scaleY(-1);
+    transform:scaleX(-1) scaleY(-1);
 }
 
 .container{

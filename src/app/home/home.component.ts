@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   votes = [{ "value": 1 }, { "value": 2 }, { "value": 3 }, { "value": 4 }, { "value": 5 }];
   user = JSON.parse(sessionStorage.getItem('token'));
   uploadDisable: boolean = false;
+  message: string = null;
 
   constructor(private storage: StorageService, private router: Router) {
     if (!this.user) {
@@ -39,16 +40,18 @@ export class HomeComponent implements OnInit {
   }
 
   onFileChange(event) {
-    this.uploadDisable = false;
     this.file = event.target.files[0];
     this.fileName = this.file.name;
   }
 
   uploadPhoto() {
     if (this.file) {
+      this.message = "We have taken your request";
       this.uploadDisable = true;
       this.storage.upload(this.file, this.user.id).subscribe(() => {
         setTimeout(() => this.loadPhoto(), 1000);
+        setTimeout(() => this.message = null, 1000);
+        setTimeout(() => this.uploadDisable = false, 1000);
       }, err => {
         console.log("err", err);
       });
@@ -56,15 +59,13 @@ export class HomeComponent implements OnInit {
   }
 
   votePhoto(data: NgForm, element) {
-    if (data.value.vote) {
+    if (data.value.vote && data.valid) {
       element.isDisabled = true;
-      if (data.valid) {
-        this.storage.vote(data.value.vote, data.value.id, this.user.id).subscribe(() => {
-          this.loadPhoto();
-        }, err => {
-          console.log(err);
-        });
-      }
+      this.storage.vote(data.value.vote, data.value.id, this.user.id).subscribe(() => {
+        this.loadPhoto();
+      }, err => {
+        console.log(err);
+      });
     }
   }
 

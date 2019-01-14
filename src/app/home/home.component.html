@@ -17,16 +17,20 @@
                         <i class="fa fa-cloud-upload"></i> Browser
                     </label>
                     <input id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />
-                    <button class="btn btn-outline-secondary yellow" type="submit"[disabled]="uploadDisable" (click)="uploadPhoto()">Upload</button>
+                    <button class="btn btn-outline-secondary yellow" type="submit" [disabled]="uploadDisable" (click)="uploadPhoto()">Upload</button>
+                    
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12">
+            <h6 *ngIf="message">{{message}}</h6>
+        </div>
         <div class="col-lg-4 col-md-6 album" *ngFor="let data of arrayPhoto">
             <div class="card">
                 <a class="pointer" (click)="photoDetail(data.ID)" target="_blank">
-                    <img class="card-img-top" src={{data.url}}>
+                    <img class="card-img-top" src={{data.url}} style="max-height: 220px; width: 100%;">
                 </a>
                 <div class="card-body" *ngIf="data.voteiduser == this.user.id">
                     <p>User: {{data.username}}</p>

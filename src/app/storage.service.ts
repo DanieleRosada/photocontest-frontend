@@ -39,11 +39,11 @@ export class StorageService {
   }
 
   vote(vote, id_photo, id_user) {
-    return this.http.post(this.base_url + '/vote', { vote, id_photo, id_user }, this.options);
+      return this.http.post(this.base_url + '/vote', { vote, id_photo, id_user }, this.options);
   }
 
-  async load(userid) { 
-    let form = JSON.stringify({"userid": userid});  
+  async load(userid) {
+    let form = JSON.stringify({ "userid": userid });
     return await fetch(this.base_url + '/home', {
       method: "POST",
       body: form,
@@ -51,8 +51,8 @@ export class StorageService {
     }).then(res => res.json());
   }
 
-  async photo(idphoto){
-    let form = JSON.stringify({"idphoto": idphoto});  
+  async photo(idphoto) {
+    let form = JSON.stringify({ "idphoto": idphoto });
     return await fetch(this.base_url + '/photo', {
       method: "POST",
       body: form,
@@ -60,10 +60,10 @@ export class StorageService {
     }).then(res => res.json());
   }
 
-  async ranking(){
+  async ranking() {
     return await fetch(this.base_url + '/ranking', this.options).then(res => res.json());
   }
-  async userranking(){
+  async userranking() {
     return await fetch(this.base_url + '/userranking', this.options).then(res => res.json());
   }
 
