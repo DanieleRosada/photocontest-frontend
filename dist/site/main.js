@@ -687,7 +687,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 var StorageService = /** @class */ (function () {
     function StorageService(http) {
         this.http = http;
-        this.base_url = "http://localhost:3000";
+        this.base_url = "ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000";
         this.getToken();
     }
     StorageService.prototype.getToken = function () {
