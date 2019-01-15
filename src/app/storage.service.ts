@@ -5,7 +5,7 @@ import { stringify } from '@angular/core/src/util';
   providedIn: 'root'
 })
 export class StorageService {
-  base_url = "ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000";
+  base_url = "http://ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000";
   options;
   constructor(private http: HttpClient) {
     this.getToken();
