@@ -1,0 +1,13 @@
+.bg-light {
+    background-color: #FFC312 !important;
+}
+.nav-link{
+    color: rgba(0,0,0,1) !important;
+    margin-right: 20px;
+}
+.pointer{
+    cursor: pointer !important;
+}
+.container{
+    height: auto;
+}

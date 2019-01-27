@@ -15,8 +15,7 @@ export class SigUpComponent implements OnInit {
   }
 
   sigup(data: NgForm) {
-    console.log("sigup");
-    if (data.valid) {
+    if (data.valid && this.validationUser(data.value.username) && this.validateEmail(data.value.email)) {
       this.storage
         .createUser(data.value.username, data.value.password, data.value.email)
         .subscribe(data => {
@@ -26,7 +25,16 @@ export class SigUpComponent implements OnInit {
           this.sigupAlert = err.statusText + (err.error.message ? ` - ${err.error.message}` : '');
         });
     } else {
-      this.sigupAlert = 'One ore more fields missing';
+      this.sigupAlert = 'Not valid fields';
     }
+  }
+
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase()) && email.length < 64;
+  }
+   
+  validationUser(user) {
+    return user.length < 64;
   }
 }

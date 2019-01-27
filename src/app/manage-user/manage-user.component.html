@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="left">Insert photo</h1>
+  </div>
+
+  <form #uploadForm="ngForm" (ngSubmit)="uploadPhoto(uploadForm)">
+    <div class="input-group mb-3 col-md-12">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Title</span>
+      </div>
+      <input type="text" name="title" [(ngModel)]="title" class="form-control" required>
+    </div>
+
+    <div class="input-group mb-3 col-md-12">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Description</span>
+      </div>
+      <textarea class="form-control" name="description" [(ngModel)]="description" aria-label="With textarea" required></textarea>
+    </div>
+
+    <div class="input-group mb-3 col-md-12">
+      <input type="text" class="form-control" placeholder="File explorer" aria-label="Insert url" value={{fileName}}>
+      <div class="input-group-append">
+        <label for="file-upload" class="btn btn-outline-secondary yellow">
+          <i class="far fa-folder"></i>
+        </label>
+        <input id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" required />
+        <button class="btn btn-outline-secondary yellow" type="submit" [disabled]="uploadDisable">Upload</button>
+      </div>
+    </div>
+  </form>
+  <div class="col-md-12">
+    <h4 *ngIf="message">{{message}}</h4>
+  </div>
+
+
+  <div class="col-md-12">
+    <h1 class="shadow">Your data & photo</h1>
+  </div>
+  <div class="col-md-6">
+    <h4>User: {{user.username}}</h4>
+  </div>
+  <div class="col-md-6 ">
+    <h4>Email: {{user.email}}</h4>
+  </div>
+
+
+  <div class="col-lg-4 col-md-6 album" *ngFor="let data of arrayPhoto">
+    <div class="card">
+      <a class="pointer" (click)="photoDetail(data.ID)" target="_blank">
+          <img *ngIf="!data.thumbnail" class="card-img-top" src={{data.url}} style="max-height: 220px; width: 100%;">
+          <img *ngIf="data.thumbnail" class="card-img-top" src={{data.thumbnail}} >
+      </a>
+      <div class="card-body">
+        <p>Title: {{data.title.substr(0, 20)}}</p>
+        <p>Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{(data.sumvotes/data.nvotes ||
+          0).toFixed(2)}}</p>
+        <button type="button" class="btn btn-warning btn-block" [disabled]="data.isDisabled" (click)="deletePhoto(data.ID, data)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

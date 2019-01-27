@@ -1,18 +1,4 @@
 
-.icon{
-    -webkit-appearance: none; 
-    font-size:48px;
-    padding: 1%;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-label{
-    margin-bottom: 0px;
-}
-
 .album{
     position: relative;
     padding-top: 5%;
@@ -20,13 +6,31 @@ label{
 
 .card{
     width: 18rem;
+    margin: 0 auto;
+    float: none; 
 }
 
 .pointer{
     cursor: pointer;
 }
-   
-.center{
-    margin-top:2px;
-    text-align: center;
+
+.search{
+    margin-top:20px;
+    margin-left: 0px;
 }
+.search button{
+    margin-left: 2%;
+}
+
+  @media (max-width: 768px) {
+    .search button {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    .search {
+      flex-direction: column;
+      align-items: stretch;
+      margin-right: 0px;
+      
+    }
+  }

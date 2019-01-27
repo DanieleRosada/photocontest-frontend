@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Photos ranking</h1>
+  </div>
+  <div class="col-md-12" *ngIf="message">
+    {{message}}
+  </div>
+
+  <div class="col-lg-4 col-md-6 album" *ngFor="let data of photos;  index as i">
+    <div class="card">
+      <a class="pointer" (click)="ViewphotoDetail(data.ID)" target="_blank">
+          <img *ngIf="!data.thumbnail" class="card-img-top" src={{data.url}} style="max-height: 220px; width: 100%;">
+          <img *ngIf="data.thumbnail" class="card-img-top" src={{data.thumbnail}} >
+      </a>
+      <div class="card-body" *ngIf="photos">
+        <p>User: {{data.username}}</p>
+        <p>Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{(data.sumvotes/data.nvotes ||
+          0).toFixed(2)}}</p>
+        <p>Users voted: <i class="fa fa-users" aria-hidden="true"></i>{{data.nvotes}}</p>
+        <p>Postion: <i class="fas fa-trophy" aria-hidden="true"></i>{{i+1}} </p>
+      </div>
+    </div>
+  </div>
+</div>

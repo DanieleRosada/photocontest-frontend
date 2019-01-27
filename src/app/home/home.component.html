@@ -1,52 +1,31 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <h1>Photo Contest, welcome {{this.user.username}}</h1>
-        </div>
-        <div class="col-md-4 text-right">
-            <i type="submit" class="fas fa-trophy icon" (click)="this.router.navigate(['/ranking']);"></i>
-            <i type="submit" class="fas fas fa-sign-out-alt icon" (click)="logout()"></i>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Insert url" aria-label="Insert url" value={{fileName}}>
-                <div class="input-group-append">
-                    <label for="file-upload" class="btn btn-outline-secondary yellow">
-                        <i class="fa fa-cloud-upload"></i> Browser
-                    </label>
-                    <input id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />
-                    <button class="btn btn-outline-secondary yellow" type="submit" [disabled]="uploadDisable" (click)="uploadPhoto()">Upload</button>
-                    
-                </div>
+<form class="form-inline row search" #searchForm="ngForm" (ngSubmit)="research(searchForm)">
+    <input class="form-control col-md-7" placeholder="Search" id="search" name="search" ngModel required>
+    <button class="btn btn-warning col-md-2 margin" type="submit">Search</button>
+    <button class="btn btn-warning col-md-2 margin" type="button">All</button>
+</form>
+
+<div class="row">
+    <div class="col-lg-4 col-md-6 album" *ngFor="let data of arrayPhoto">
+        <div class="card">
+            <a class="pointer" (click)="photoDetail(data.ID)" target="_blank">
+                <img *ngIf="!data.thumbnail" class="card-img-top" src={{data.url}} style="max-height: 220px; width: 100%;">
+                <img *ngIf="data.thumbnail" class="card-img-top" src={{data.thumbnail}} >
+            </a>
+            <div class="card-body" *ngIf="data.voteiduser == this.user.id || data.ID_user == this.user.id">
+                <p>User: {{data.username}}</p>
+                <p>Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{(data.sumvotes/data.nvotes ||
+                    0).toFixed(2)}}</p>
+                <p>Users voted: <i class="fa fa-users" aria-hidden="true"></i>{{data.nvotes}}</p>
             </div>
-        </div>
-    </div> 
-    <div class="row">
-        <div class="col-md-12">
-            <h6 *ngIf="message">{{message}}</h6>
-        </div>
-        <div class="col-lg-4 col-md-6 album" *ngFor="let data of arrayPhoto">
-            <div class="card">
-                <a class="pointer" (click)="photoDetail(data.ID)" target="_blank">
-                    <img class="card-img-top" src={{data.url}} style="max-height: 220px; width: 100%;">
-                </a>
-                <div class="card-body" *ngIf="data.voteiduser == this.user.id">
-                    <p>User: {{data.username}}</p>
-                    <p>Average stars: <i class="fa fa-star" aria-hidden="true"></i>{{(data.sumvotes/data.nvotes).toFixed(2)}}</p>
-                    <p>Users voted: <i class="fa fa-users" aria-hidden="true"></i>{{data.nvotes}}</p>
-                </div>
-                <div class="card-body" *ngIf="data.voteiduser != this.user.id">
-                    <p>User: {{data.username}}</p>
-                    <form #likeForm="ngForm" (ngSubmit)="votePhoto(likeForm, data);">
-                        <select class="form-control" [(ngModel)]="data.vote" name="vote" required>
-                            <option *ngFor="let vote of votes" value="{{vote.value}}">{{vote.value}}</option>
-                        </select>
-                        <input type="hidden" name="id" [(ngModel)]="data.ID" />
-                        <button type="submit" class="btn btn-warning yellow center" [disabled]="data.isDisabled">Vote</button>
-                    </form>
-                </div>
+            <div class="card-body" *ngIf="data.voteiduser != this.user.id && data.ID_user != this.user.id">
+                <p>User: {{data.username}}</p>
+                <form #likeForm="ngForm" class="form-inline row" (ngSubmit)="votePhoto(likeForm, data);">
+                    <select class="form-control col-6" [(ngModel)]="data.vote" name="vote" required>
+                        <option *ngFor="let vote of votes" value="{{vote.value}}">{{vote.value}}</option>
+                    </select>
+                    <input type="hidden" name="id" [(ngModel)]="data.ID" />
+                    <button type="submit" class="btn btn-warning col-5 offset-1" [disabled]="data.isDisabled">Vote</button>
+                </form>
             </div>
         </div>
     </div>

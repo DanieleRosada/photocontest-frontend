@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Users ranking</h1>
+    </div>
+    <div class="col-md-12" *ngIf="message">
+      <p>{{message}}</p>
+    </div>
+
+    <div class="col-lg-12" *ngFor="let user of users;  index as i">
+      <p class="center"><i class="fas fa-trophy"></i> {{i+1}}
+        User: {{user.username}}
+        Average stars: <i class="fa fa-star"></i>{{(user.sumvotes/user.nvotes ||
+        0).toFixed(2)}}
+        Users voted: <i class="fa fa-users"></i>{{user.nvotes}}
+        Photos: <i class="far fa-image"></i>{{user.nphotos}}
+      </p>
+    </div>
+  </div>
+</div>

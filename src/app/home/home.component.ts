@@ -1,60 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../storage.service';
-import { ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-@ViewChild('fileInput')
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  file: File;
-  fileName: string;
   arrayPhoto;
   vote: number;
   votes = [{ "value": 1 }, { "value": 2 }, { "value": 3 }, { "value": 4 }, { "value": 5 }];
+  search = [{ "value": "photo name" }, { "value": "author" }, { "value": "title" }, { "value": "description" }];
   user = JSON.parse(sessionStorage.getItem('token'));
-  uploadDisable: boolean = false;
-  message: string = null;
 
-  constructor(private storage: StorageService, private router: Router) {
-    if (!this.user) {
-      this.router.navigateByUrl('/login');
-    }
-    else {
-      this.loadPhoto();
-    }
+
+  constructor(private storage: StorageService, private router: Router) { }
+
+  ngOnInit() {
+    this.loadPhoto();
   }
-
-  ngOnInit() { }
 
   loadPhoto() {
     this.storage.load(this.user.id).then(res => this.arrayPhoto = res);
   }
 
-  logout() {
-    this.storage.logout();
-    this.router.navigate(['/login']);
-  }
-
-  onFileChange(event) {
-    this.file = event.target.files[0];
-    this.fileName = this.file.name;
-  }
-
-  uploadPhoto() {
-    if (this.file) {
-      this.message = "We have taken your request";
-      this.uploadDisable = true;
-      this.storage.upload(this.file, this.user.id).subscribe(() => {
-        setTimeout(() => this.loadPhoto(), 1000);
-        setTimeout(() => this.message = null, 1000);
-        setTimeout(() => this.uploadDisable = false, 1000);
-      }, err => {
-        console.log("err", err);
-      });
+  research(data: NgForm) {
+    if (data.valid) {
+      this.storage.search(data.value.search, this.user.id).then(res => console.log(res));
     }
   }
 
@@ -73,6 +46,4 @@ export class HomeComponent implements OnInit {
     let url: string = "/photo/" + photo_id;
     this.router.navigateByUrl(url);
   }
-
-
 }
