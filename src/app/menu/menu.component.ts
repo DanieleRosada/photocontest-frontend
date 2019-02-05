@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   user = JSON.parse(sessionStorage.getItem('token'));
-  navbarToggler;
   constructor(private storage: StorageService, private router: Router) {
     this.storage.user().subscribe(() => {}
       , err => {

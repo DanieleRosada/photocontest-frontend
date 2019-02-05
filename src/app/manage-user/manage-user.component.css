@@ -14,11 +14,11 @@ label{
 .card{
     width: 18rem;
     margin: 0 auto;
-    float: none; 
+    float: none;
 }
 
 .input-group-text{
-    width: initial; 
+    width: initial;
 }
 
 form{
@@ -42,4 +42,8 @@ h1{
 
 .pointer{
     cursor: pointer;
+}
+
+h4{
+  word-wrap: break-word;
 }

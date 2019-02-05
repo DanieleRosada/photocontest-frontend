@@ -15,7 +15,6 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
 import { MenuComponent } from './menu/menu.component';
 import { RankPhotosComponent } from './rank-photos/rank-photos.component';
 
-
 const routes: Routes = [
   {
     path: '', component: MenuComponent, children: [
@@ -23,7 +22,7 @@ const routes: Routes = [
       { path: 'photo/:id', component: PhotoDetailsComponent },
       { path: 'rankusers', component: RankUsersComponent },
       { path: 'rankphotos', component: RankPhotosComponent },
-      { path: 'user', component: ManageUserComponent }, 
+      { path: 'user', component: ManageUserComponent },
     ]
   },
   { path: 'login', component: LoginComponent },
