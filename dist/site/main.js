@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -100,8 +100,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _photo_detail_photo_detail_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photo-detail/photo-detail.component */ "./src/app/photo-detail/photo-detail.component.ts");
-/* harmony import */ var _ranking_ranking_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ranking/ranking.component */ "./src/app/ranking/ranking.component.ts");
+/* harmony import */ var _photo_details_photo_details_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photo-details/photo-details.component */ "./src/app/photo-details/photo-details.component.ts");
+/* harmony import */ var _rank_users_rank_users_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./rank-users/rank-users.component */ "./src/app/rank-users/rank-users.component.ts");
+/* harmony import */ var _manage_user_manage_user_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./manage-user/manage-user.component */ "./src/app/manage-user/manage-user.component.ts");
+/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
+/* harmony import */ var _rank_photos_rank_photos_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./rank-photos/rank-photos.component */ "./src/app/rank-photos/rank-photos.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -119,14 +122,22 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
 var routes = [
-    { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"] },
-    { path: 'photo/:id', component: _photo_detail_photo_detail_component__WEBPACK_IMPORTED_MODULE_9__["PhotoDetailComponent"] },
+    {
+        path: '', component: _menu_menu_component__WEBPACK_IMPORTED_MODULE_12__["MenuComponent"], children: [
+            { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"] },
+            { path: 'photo/:id', component: _photo_details_photo_details_component__WEBPACK_IMPORTED_MODULE_9__["PhotoDetailsComponent"] },
+            { path: 'rankusers', component: _rank_users_rank_users_component__WEBPACK_IMPORTED_MODULE_10__["RankUsersComponent"] },
+            { path: 'rankphotos', component: _rank_photos_rank_photos_component__WEBPACK_IMPORTED_MODULE_13__["RankPhotosComponent"] },
+            { path: 'user', component: _manage_user_manage_user_component__WEBPACK_IMPORTED_MODULE_11__["ManageUserComponent"] },
+        ]
+    },
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] },
     { path: 'sigup', component: _sig_up_sig_up_component__WEBPACK_IMPORTED_MODULE_5__["SigUpComponent"] },
-    { path: 'ranking', component: _ranking_ranking_component__WEBPACK_IMPORTED_MODULE_10__["RankingComponent"] },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: '**', redirectTo: '/login', pathMatch: 'full' },
+    { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -138,8 +149,11 @@ var AppModule = /** @class */ (function () {
                 _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"],
                 _sig_up_sig_up_component__WEBPACK_IMPORTED_MODULE_5__["SigUpComponent"],
-                _photo_detail_photo_detail_component__WEBPACK_IMPORTED_MODULE_9__["PhotoDetailComponent"],
-                _ranking_ranking_component__WEBPACK_IMPORTED_MODULE_10__["RankingComponent"]
+                _photo_details_photo_details_component__WEBPACK_IMPORTED_MODULE_9__["PhotoDetailsComponent"],
+                _rank_users_rank_users_component__WEBPACK_IMPORTED_MODULE_10__["RankUsersComponent"],
+                _manage_user_manage_user_component__WEBPACK_IMPORTED_MODULE_11__["ManageUserComponent"],
+                _menu_menu_component__WEBPACK_IMPORTED_MODULE_12__["MenuComponent"],
+                _rank_photos_rank_photos_component__WEBPACK_IMPORTED_MODULE_13__["RankPhotosComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -165,7 +179,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.icon{\r\n    -webkit-appearance: none; \r\n    font-size:48px;\r\n    padding: 1%;\r\n}\r\n\r\ninput[type=\"file\"] {\r\n    display: none;\r\n}\r\n\r\nlabel{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.album{\r\n    position: relative;\r\n    padding-top: 5%;\r\n}\r\n\r\n.card{\r\n    width: 18rem;\r\n}\r\n\r\n.pointer{\r\n    cursor: pointer;\r\n}\r\n\r\n.center{\r\n    margin-top:2px;\r\n    text-align: center;\r\n}"
+module.exports = "\r\n.album{\r\n    position: relative;\r\n    padding-top: 5%;\r\n}\r\n\r\n.card{\r\n    width: 18rem;\r\n    margin: 0 auto;\r\n    float: none;\r\n}\r\n\r\n.pointer{\r\n    cursor: pointer;\r\n}\r\n\r\n.search{\r\n    margin-top:20px;\r\n    margin-left: 0px;\r\n}\r\n\r\n.search button{\r\n    margin-left: 3.3%;\r\n}\r\n\r\n@media (max-width: 767.5px) {\r\n    .search button {\r\n        margin-top: 10px;\r\n        margin-left: 0px;\r\n    }\r\n    .search {\r\n      flex-direction: column;\r\n      align-items: stretch;\r\n      margin-right: 0px;\r\n\r\n    }\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0lBQ0ksa0JBQWtCO0lBQ2xCLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osY0FBYztJQUNkLFdBQVc7QUFDZjs7QUFFQTtJQUNJLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxlQUFlO0lBQ2YsZ0JBQWdCO0FBQ3BCOztBQUNBO0lBQ0ksaUJBQWlCO0FBQ3JCOztBQUVFO0lBQ0U7UUFDSSxnQkFBZ0I7UUFDaEIsZ0JBQWdCO0lBQ3BCO0lBQ0E7TUFDRSxzQkFBc0I7TUFDdEIsb0JBQW9CO01BQ3BCLGlCQUFpQjs7SUFFbkI7RUFDRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5hbGJ1bXtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHBhZGRpbmctdG9wOiA1JTtcclxufVxyXG5cclxuLmNhcmR7XHJcbiAgICB3aWR0aDogMThyZW07XHJcbiAgICBtYXJnaW46IDAgYXV0bztcclxuICAgIGZsb2F0OiBub25lO1xyXG59XHJcblxyXG4ucG9pbnRlcntcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuLnNlYXJjaHtcclxuICAgIG1hcmdpbi10b3A6MjBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiAwcHg7XHJcbn1cclxuLnNlYXJjaCBidXR0b257XHJcbiAgICBtYXJnaW4tbGVmdDogMy4zJTtcclxufVxyXG5cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY3LjVweCkge1xyXG4gICAgLnNlYXJjaCBidXR0b24ge1xyXG4gICAgICAgIG1hcmdpbi10b3A6IDEwcHg7XHJcbiAgICAgICAgbWFyZ2luLWxlZnQ6IDBweDtcclxuICAgIH1cclxuICAgIC5zZWFyY2gge1xyXG4gICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgICBhbGlnbi1pdGVtczogc3RyZXRjaDtcclxuICAgICAgbWFyZ2luLXJpZ2h0OiAwcHg7XHJcblxyXG4gICAgfVxyXG4gIH1cclxuIl19 */"
 
 /***/ }),
 
@@ -176,7 +190,7 @@ module.exports = "\r\n.icon{\r\n    -webkit-appearance: none; \r\n    font-size:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-md-8\">\n            <h1>Photo Contest, welcome {{this.user.username}}</h1>\n        </div>\n        <div class=\"col-md-4 text-right\">\n            <i type=\"submit\" class=\"fas fa-trophy icon\" (click)=\"this.router.navigate(['/ranking']);\"></i>\n            <i type=\"submit\" class=\"fas fas fa-sign-out-alt icon\" (click)=\"logout()\"></i>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" placeholder=\"Insert url\" aria-label=\"Insert url\" value={{fileName}}>\n                <div class=\"input-group-append\">\n                    <label for=\"file-upload\" class=\"btn btn-outline-secondary yellow\">\n                        <i class=\"fa fa-cloud-upload\"></i> Browser\n                    </label>\n                    <input id=\"file-upload\" type=\"file\" accept=\"image/*\" (change)=\"onFileChange($event)\" />\n                    <button class=\"btn btn-outline-secondary yellow\" type=\"submit\" [disabled]=\"uploadDisable\" (click)=\"uploadPhoto()\">Upload</button>\n                    \n                </div>\n            </div>\n        </div>\n    </div> \n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <h6 *ngIf=\"message\">{{message}}</h6>\n        </div>\n        <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of arrayPhoto\">\n            <div class=\"card\">\n                <a class=\"pointer\" (click)=\"photoDetail(data.ID)\" target=\"_blank\">\n                    <img class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\n                </a>\n                <div class=\"card-body\" *ngIf=\"data.voteiduser == this.user.id\">\n                    <p>User: {{data.username}}</p>\n                    <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes).toFixed(2)}}</p>\n                    <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\n                </div>\n                <div class=\"card-body\" *ngIf=\"data.voteiduser != this.user.id\">\n                    <p>User: {{data.username}}</p>\n                    <form #likeForm=\"ngForm\" (ngSubmit)=\"votePhoto(likeForm, data);\">\n                        <select class=\"form-control\" [(ngModel)]=\"data.vote\" name=\"vote\" required>\n                            <option *ngFor=\"let vote of votes\" value=\"{{vote.value}}\">{{vote.value}}</option>\n                        </select>\n                        <input type=\"hidden\" name=\"id\" [(ngModel)]=\"data.ID\" />\n                        <button type=\"submit\" class=\"btn btn-warning yellow center\" [disabled]=\"data.isDisabled\">Vote</button>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<form class=\"form-inline row search\" #searchForm=\"ngForm\" (ngSubmit)=\"research(searchForm)\">\n    <input class=\"form-control col-md-7\" placeholder=\"Search\" id=\"search\" name=\"search\" ngModel required>\n    <button class=\"btn btn-warning col-md-2 margin\" type=\"submit\">Search</button>\n    <button class=\"btn btn-warning col-md-2 margin\" type=\"button\" (click)=\"loadPhoto()\">All</button>\n</form>\n\n<div class=\"row\">\n    <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of arrayPhoto\">\n        <div class=\"card\">\n            <a class=\"pointer\" (click)=\"photoDetail(data.ID)\" target=\"_blank\">\n                <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\n                <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}} >\n            </a>\n            <div class=\"card-body\" *ngIf=\"data.voteiduser == this.user.id || data.ID_user == this.user.id\">\n                <p>User: {{data.username}}</p>\n                <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\n                    0).toFixed(2)}}</p>\n                <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\n            </div>\n            <div class=\"card-body\" *ngIf=\"data.voteiduser != this.user.id && data.ID_user != this.user.id\">\n                <p>User: {{data.username}}</p>\n                <form #likeForm=\"ngForm\" class=\"form-inline row\" (ngSubmit)=\"votePhoto(likeForm, data);\">\n                    <select class=\"form-control col-6\" [(ngModel)]=\"data.vote\" name=\"vote\" required>\n                        <option *ngFor=\"let vote of votes\" value=\"{{vote.value}}\">{{vote.value}}</option>\n                    </select>\n                    <input type=\"hidden\" name=\"id\" [(ngModel)]=\"data.ID\" />\n                    <button type=\"submit\" class=\"btn btn-warning col-5 offset-1\" [disabled]=\"data.isDisabled\">Vote</button>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -205,47 +219,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(storage, router) {
         this.storage = storage;
         this.router = router;
         this.votes = [{ "value": 1 }, { "value": 2 }, { "value": 3 }, { "value": 4 }, { "value": 5 }];
+        this.search = [{ "value": "photo name" }, { "value": "author" }, { "value": "title" }, { "value": "description" }];
         this.user = JSON.parse(sessionStorage.getItem('token'));
-        this.uploadDisable = false;
-        this.message = null;
-        if (!this.user) {
-            this.router.navigateByUrl('/login');
-        }
-        else {
-            this.loadPhoto();
-        }
     }
-    HomeComponent.prototype.ngOnInit = function () { };
+    HomeComponent.prototype.ngOnInit = function () {
+        this.loadPhoto();
+    };
     HomeComponent.prototype.loadPhoto = function () {
         var _this = this;
         this.storage.load(this.user.id).then(function (res) { return _this.arrayPhoto = res; });
     };
-    HomeComponent.prototype.logout = function () {
-        this.storage.logout();
-        this.router.navigate(['/login']);
-    };
-    HomeComponent.prototype.onFileChange = function (event) {
-        this.file = event.target.files[0];
-        this.fileName = this.file.name;
-    };
-    HomeComponent.prototype.uploadPhoto = function () {
+    HomeComponent.prototype.research = function (data) {
         var _this = this;
-        if (this.file) {
-            this.message = "We have taken your request";
-            this.uploadDisable = true;
-            this.storage.upload(this.file, this.user.id).subscribe(function () {
-                setTimeout(function () { return _this.loadPhoto(); }, 1000);
-                setTimeout(function () { return _this.message = null; }, 1000);
-                setTimeout(function () { return _this.uploadDisable = false; }, 1000);
-            }, function (err) {
-                console.log("err", err);
-            });
+        if (data.valid) {
+            this.storage.search(data.value.search, this.user.id).then(function (res) { return _this.arrayPhoto = res; });
         }
     };
     HomeComponent.prototype.votePhoto = function (data, element) {
@@ -264,7 +256,6 @@ var HomeComponent = /** @class */ (function () {
         this.router.navigateByUrl(url);
     };
     HomeComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('fileInput'),
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
@@ -286,7 +277,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".card{\r\n    height: auto;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmR7XHJcbiAgICBoZWlnaHQ6IGF1dG87XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -297,7 +288,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"d-flex justify-content-center h-100\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h3>Sign In</h3>\n                <div class=\"d-flex justify-content-end social_icon\">\n                    <span><i class=\"fab fa-facebook-square\"></i></span>\n                    <span><i class=\"fab fa-google-plus-square\"></i></span>\n                    <span><i class=\"fab fa-twitter-square\"></i></span>\n                </div>\n            </div>\n            <div class=\"card-body\">\n                <form #loginForm=\"ngForm\" (ngSubmit)=\"login(loginForm);\">\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n                        </div>\n                        <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Username\" class=\"form-control\"\n                            ngModel required>\n\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n                        </div>\n                        <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\"\n                            ngModel required>\n                    </div>\n                    <div class=\"row align-items-center remember\">\n                        <input type=\"checkbox\">Remember Me\n                    </div>\n                    <div class=\"form-group\">\n                        <input type=\"submit\" value=\"Login\" class=\"btn float-right yellow\">\n                    </div>\n                </form>\n            </div>\n            <div class=\"card-footer\">\n                <div class=\"d-flex justify-content-center links\">\n                    Don't have an account?<a href=\"/sigup\">Sign Up</a>\n                </div>\n                <div class=\"d-flex justify-content-center\">\n                    <a href=\"#\">Forgot your password?</a>\n                </div>\n            <div class=\"alert alert-danger form-group\" role=\"alert\" *ngIf=\"loginAlert\">{{loginAlert}}</div>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"d-flex justify-content-center h-100\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h1>Login</h1>\n            </div>\n            <div class=\"card-body\">\n                <form #loginForm=\"ngForm\" (ngSubmit)=\"login(loginForm);\">\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n                        </div>\n                        <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Username\" class=\"form-control\" autocomplete=\"username\"\n                            ngModel required>\n\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n                        </div>\n                        <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\" autocomplete=\"password\"\n                            ngModel required>\n                    </div>\n                    <div class=\"form-group\">\n                        <input type=\"submit\" value=\"Login\" class=\"btn float-right yellow\">\n                    </div>\n                </form>\n            </div>\n            <div class=\"card-footer\">\n                    <div class=\"alert alert-danger form-group\" role=\"alert\" *ngIf=\"loginAlert\">{{loginAlert}}</div>\n                <div class=\"d-flex justify-content-center links\">\n                    Don't have an account?<a href=\"/sigup\">Sign Up</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -365,38 +356,38 @@ var LoginComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/photo-detail/photo-detail.component.css":
-/*!*********************************************************!*\
-  !*** ./src/app/photo-detail/photo-detail.component.css ***!
-  \*********************************************************/
+/***/ "./src/app/manage-user/manage-user.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/manage-user/manage-user.component.css ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "img {\r\n    border: 5px solid #fff;\r\n    border-radius: 4px;\r\n  }\r\n.right{\r\n    float: right;\r\n}\r\n.left{\r\n    float:left;\r\n}"
+module.exports = "input[type=\"file\"] {\r\n    display: none;\r\n}\r\n\r\nlabel{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.album{\r\n    position: relative;\r\n    padding-top: 2%;\r\n}\r\n\r\n.card{\r\n    width: 18rem;\r\n    margin: 0 auto;\r\n    float: none;\r\n}\r\n\r\n.input-group-text{\r\n    width: initial;\r\n}\r\n\r\nform{\r\n    width: 100%;\r\n}\r\n\r\nh1{\r\n    margin-top:10px;\r\n}\r\n\r\n.shadow{\r\n    background-color: rgba(0,0,0,0.6);\r\n}\r\n\r\n.pointer{\r\n    cursor: pointer;\r\n}\r\n\r\nh4{\r\n  word-wrap: break-word;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFuYWdlLXVzZXIvbWFuYWdlLXVzZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQkFBa0I7QUFDdEI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixjQUFjO0lBQ2QsV0FBVztBQUNmOztBQUVBO0lBQ0ksY0FBYztBQUNsQjs7QUFFQTtJQUNJLFdBQVc7QUFDZjs7QUFJQTtJQUNJLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxpQ0FBaUM7QUFDckM7O0FBRUE7SUFDSSxlQUFlO0FBQ25COztBQUVBO0VBQ0UscUJBQXFCO0FBQ3ZCIiwiZmlsZSI6InNyYy9hcHAvbWFuYWdlLXVzZXIvbWFuYWdlLXVzZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImlucHV0W3R5cGU9XCJmaWxlXCJdIHtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuXHJcbmxhYmVse1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMHB4O1xyXG59XHJcblxyXG4uYWxidW17XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nLXRvcDogMiU7XHJcbn1cclxuXHJcbi5jYXJke1xyXG4gICAgd2lkdGg6IDE4cmVtO1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICBmbG9hdDogbm9uZTtcclxufVxyXG5cclxuLmlucHV0LWdyb3VwLXRleHR7XHJcbiAgICB3aWR0aDogaW5pdGlhbDtcclxufVxyXG5cclxuZm9ybXtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG5cclxuXHJcbmgxe1xyXG4gICAgbWFyZ2luLXRvcDoxMHB4O1xyXG59XHJcblxyXG4uc2hhZG93e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwwLjYpO1xyXG59XHJcblxyXG4ucG9pbnRlcntcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuaDR7XHJcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
-/***/ "./src/app/photo-detail/photo-detail.component.html":
-/*!**********************************************************!*\
-  !*** ./src/app/photo-detail/photo-detail.component.html ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <div class=\"row\" *ngFor=\"let data of photo\">\n    <div class=\"col-md-12\" >\n      <h1 class=\"left\">User: {{data.username}}</h1>\n      <button class=\"btn btn-outline-secondary yellow right\" type=\"submit\" (click)=\"back()\">Home</button>\n    </div>\n    <div class=\"col-md-12\">\n      <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes).toFixed(2)}}</p>\n      <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\n      <img class=\"card-img-top\" src={{data.url}} width=\"100%\">\n    </div>\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ "./src/app/photo-detail/photo-detail.component.ts":
+/***/ "./src/app/manage-user/manage-user.component.html":
 /*!********************************************************!*\
-  !*** ./src/app/photo-detail/photo-detail.component.ts ***!
+  !*** ./src/app/manage-user/manage-user.component.html ***!
   \********************************************************/
-/*! exports provided: PhotoDetailComponent */
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row shadow\">\n  <div class=\"col-md-12\">\n    <h1 class=\"center\">Insert photo</h1>\n  </div>\n\n  <form #uploadForm=\"ngForm\" (ngSubmit)=\"uploadPhoto(uploadForm)\">\n    <div class=\"input-group mb-3 col-md-12\">\n      <div class=\"input-group-prepend\">\n        <span class=\"input-group-text\" id=\"basic-addon1\">Title</span>\n      </div>\n      <input type=\"text\" name=\"title\" [(ngModel)]=\"title\" class=\"form-control\" required>\n    </div>\n\n    <div class=\"input-group mb-3 col-md-12\">\n      <div class=\"input-group-prepend\">\n        <span class=\"input-group-text\">Description</span>\n      </div>\n      <textarea class=\"form-control\" name=\"description\" [(ngModel)]=\"description\" aria-label=\"With textarea\" required></textarea>\n    </div>\n\n    <div class=\"input-group mb-3 col-md-12\">\n      <input type=\"text\" class=\"form-control\" placeholder=\"File explorer\" aria-label=\"Insert url\" value={{fileName}}>\n      <div class=\"input-group-append\">\n        <label for=\"file-upload\" class=\"btn btn-outline-secondary yellow\">\n          <i class=\"far fa-folder\"></i>\n        </label>\n        <input id=\"file-upload\" type=\"file\" accept=\"image/*\" (change)=\"onFileChange($event)\" required />\n        <button class=\"btn btn-outline-secondary yellow\" type=\"submit\" [disabled]=\"uploadDisable\">Upload</button>\n      </div>\n    </div>\n  </form>\n  <div class=\"col-md-12\">\n    <h4 class=\"center\" *ngIf=\"message\">{{message}}</h4>\n  </div>\n\n\n  <div class=\"col-md-12\">\n    <h1 class=\"center\">Your data & photo</h1>\n  </div>\n  <div class=\"col-md-6\">\n    <h4 class=\"center\">User: {{user.username}}</h4>\n  </div>\n  <div class=\"col-md-6 \">\n    <h4 class=\"center\">Email: {{user.email}}</h4>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of arrayPhoto\">\n    <div class=\"card\">\n      <a class=\"pointer\" (click)=\"photoDetail(data.ID)\" target=\"_blank\">\n        <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\n        <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}}>\n      </a>\n      <div class=\"card-body\">\n        <p>Title: {{data.title.substr(0, 20)}}</p>\n        <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\n          0).toFixed(2)}}</p>\n        <button type=\"button\" class=\"btn btn-warning btn-block\" [disabled]=\"data.isDisabled\" (click)=\"deletePhoto(data.ID, data)\">Delete</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/manage-user/manage-user.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/manage-user/manage-user.component.ts ***!
+  \******************************************************/
+/*! exports provided: ManageUserComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoDetailComponent", function() { return PhotoDetailComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ManageUserComponent", function() { return ManageUserComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
@@ -413,73 +404,180 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var PhotoDetailComponent = /** @class */ (function () {
-    function PhotoDetailComponent(routeid, storage, router) {
-        var _this = this;
-        this.routeid = routeid;
+var ManageUserComponent = /** @class */ (function () {
+    function ManageUserComponent(storage, router) {
         this.storage = storage;
         this.router = router;
-        this.routeid.params.subscribe(function (params) {
-            _this.id = params['id'];
-        });
-        this.loadDetail();
+        this.user = JSON.parse(sessionStorage.getItem('token'));
+        this.uploadDisable = false;
+        this.message = null;
     }
-    PhotoDetailComponent.prototype.ngOnInit = function () {
+    ManageUserComponent.prototype.ngOnInit = function () {
+        this.owenPhoto();
     };
-    PhotoDetailComponent.prototype.back = function () {
-        this.router.navigate(['/home']);
-    };
-    PhotoDetailComponent.prototype.loadDetail = function () {
+    ManageUserComponent.prototype.owenPhoto = function () {
         var _this = this;
-        this.storage.photo(this.id).then(function (res) { return _this.photo = res; });
+        this.storage.owenPhoto(this.user.id).then(function (res) { return _this.arrayPhoto = res; });
     };
-    PhotoDetailComponent = __decorate([
+    ManageUserComponent.prototype.onFileChange = function (event) {
+        this.file = event.target.files[0];
+        this.fileName = this.file.name;
+    };
+    ManageUserComponent.prototype.uploadPhoto = function (data) {
+        var _this = this;
+        if (this.file && data.valid) {
+            this.message = "We have taken your request";
+            this.uploadDisable = true;
+            this.storage.upload(this.file, this.user.id, data.value.title, data.value.description).subscribe(function () {
+                _this.owenPhoto();
+                _this.message = null;
+                _this.uploadDisable = false;
+            }, function (err) {
+                console.log("err", err);
+            });
+        }
+        else {
+            this.message = "Form not valid";
+        }
+    };
+    ManageUserComponent.prototype.deletePhoto = function (idphoto, data) {
+        var _this = this;
+        data.isDisabled = true;
+        this.storage.deletePhoto(idphoto).subscribe(function () {
+            _this.owenPhoto();
+        }, function (err) {
+            console.log("err", err);
+        });
+    };
+    ManageUserComponent.prototype.photoDetail = function (photo_id) {
+        var url = "/photo/" + photo_id;
+        this.router.navigateByUrl(url);
+    };
+    ManageUserComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('fileInput'),
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-photo-detail',
-            template: __webpack_require__(/*! ./photo-detail.component.html */ "./src/app/photo-detail/photo-detail.component.html"),
-            styles: [__webpack_require__(/*! ./photo-detail.component.css */ "./src/app/photo-detail/photo-detail.component.css")]
+            selector: 'app-manage-user',
+            template: __webpack_require__(/*! ./manage-user.component.html */ "./src/app/manage-user/manage-user.component.html"),
+            styles: [__webpack_require__(/*! ./manage-user.component.css */ "./src/app/manage-user/manage-user.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
-    ], PhotoDetailComponent);
-    return PhotoDetailComponent;
+        __metadata("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], ManageUserComponent);
+    return ManageUserComponent;
 }());
 
 
 
 /***/ }),
 
-/***/ "./src/app/ranking/ranking.component.css":
-/*!***********************************************!*\
-  !*** ./src/app/ranking/ranking.component.css ***!
-  \***********************************************/
+/***/ "./src/app/menu/menu.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/menu/menu.component.css ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".album{\r\n    position: relative;\r\n    padding-top: 5%;\r\n}\r\n\r\n.card{\r\n    width: 14rem;\r\n}\r\n\r\n.pointer{\r\n    cursor: pointer;\r\n}\r\n\r\n.right{\r\n    float: right;\r\n}\r\n\r\n.left{\r\n    float:left;\r\n}\r\n\r\n.center{\r\n    text-align: center;\r\n}"
+module.exports = ".bg-light {\r\n    background-color: #FFC312 !important;\r\n}\r\n.nav-link{\r\n    color: rgba(0,0,0,1) !important;\r\n    margin-right: 20px;\r\n}\r\n.pointer{\r\n    cursor: pointer !important;\r\n}\r\n.container{\r\n    height: auto;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVudS9tZW51LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxvQ0FBb0M7QUFDeEM7QUFDQTtJQUNJLCtCQUErQjtJQUMvQixrQkFBa0I7QUFDdEI7QUFDQTtJQUNJLDBCQUEwQjtBQUM5QjtBQUNBO0lBQ0ksWUFBWTtBQUNoQiIsImZpbGUiOiJzcmMvYXBwL21lbnUvbWVudS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJnLWxpZ2h0IHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGRkMzMTIgIWltcG9ydGFudDtcclxufVxyXG4ubmF2LWxpbmt7XHJcbiAgICBjb2xvcjogcmdiYSgwLDAsMCwxKSAhaW1wb3J0YW50O1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xyXG59XHJcbi5wb2ludGVye1xyXG4gICAgY3Vyc29yOiBwb2ludGVyICFpbXBvcnRhbnQ7XHJcbn1cclxuLmNvbnRhaW5lcntcclxuICAgIGhlaWdodDogYXV0bztcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
-/***/ "./src/app/ranking/ranking.component.html":
-/*!************************************************!*\
-  !*** ./src/app/ranking/ranking.component.html ***!
-  \************************************************/
+/***/ "./src/app/menu/menu.component.html":
+/*!******************************************!*\
+  !*** ./src/app/menu/menu.component.html ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-lg-12\">\n      <h1 class=\"left\">Rating</h1>\n      <div class=\"right\">\n        <button *ngIf=\"!photoUser\" class=\"btn btn-outline-secondary yellow\" type=\"submit\" (click)=\"raking()\">Photo</button>\n        <button *ngIf=\"photoUser\" class=\"btn btn-outline-secondary yellow\" type=\"submit\" (click)=\"userraking()\">User</button>\n        <button class=\"btn btn-outline-secondary yellow\" type=\"submit\" (click)=\"back()\">Home</button>\n      </div>\n    </div>\n  </div>\n  <!-- <p *ngIf=\"!photos || !users\">{{message}}</p> -->\n  <div class=\"row\" *ngIf=\"photoUser\">\n    <div class=\"col-lg-3 col-md-4 col-sm-6 album\" *ngFor=\"let data of photos;  index as i\">\n      <div class=\"card\">\n        <a class=\"pointer\" (click)=\"ViewphotoDetail(data.ID)\" target=\"_blank\">\n          <img class=\"card-img-top\" src={{data.url}}>\n        </a>\n        <div class=\"card-body\" *ngIf=\"photos\">\n          <p>User: {{data.username}}</p>\n          <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes).toFixed(2)}}</p>\n          <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\n          <p>Postion: <i class=\"fas fa-trophy\" aria-hidden=\"true\"></i>{{i+1}} </p>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\" *ngIf=\"!photoUser\">\n    <div class=\"col-lg-12\" *ngFor=\"let user of users;  index as i\">\n      <p class=\"center\"><i class=\"fas fa-trophy\" aria-hidden=\"true\"></i> {{i+1}}\n      User: {{user.username}}   \n      Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(user.sumvotes/user.nvotes).toFixed(2)}}\n      Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{user.nvotes}}\n      Photos: {{user.nphotos}} \n      </p>\n    </div>\n  </div>\n</div>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <a class=\"navbar-brand\" routerLink=\"/home\"> <img src=\"../../favicon.ico\" style=\"max-height: 70%; max-width: 70%;\" /></a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\n        <a class=\"nav-link\" routerLink=\"/home\">Home</a>\n      </li>\n      <li class=\"nav-item\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\n        <a class=\"nav-link\" routerLink=\"/user\">Manage User</a>\n      </li>\n      <li class=\"nav-item dropdown\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\n        <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\n          aria-expanded=\"false\">\n          Rank\n        </a>\n        <div class=\"dropdown-menu\">\n          <a class=\"dropdown-item\" routerLink=\"/rankphotos\">Photos</a>\n          <a class=\"dropdown-item\" routerLink=\"/rankusers\">Users</a>\n        </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link pointer\" (click)=\"logout()\">Logout</a>\n      </li>\n    </ul>\n    <span class=\"navbar-text\">\n      Welcome {{user.username}}\n    </span>\n  </div>\n</nav>\n\n<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
-/***/ "./src/app/ranking/ranking.component.ts":
-/*!**********************************************!*\
-  !*** ./src/app/ranking/ranking.component.ts ***!
-  \**********************************************/
-/*! exports provided: RankingComponent */
+/***/ "./src/app/menu/menu.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/menu/menu.component.ts ***!
+  \****************************************/
+/*! exports provided: MenuComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RankingComponent", function() { return RankingComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuComponent", function() { return MenuComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MenuComponent = /** @class */ (function () {
+    function MenuComponent(storage, router) {
+        var _this = this;
+        this.storage = storage;
+        this.router = router;
+        this.user = JSON.parse(sessionStorage.getItem('token'));
+        this.storage.user().subscribe(function () { }, function (err) {
+            _this.router.navigate(['/login']);
+        });
+    }
+    MenuComponent.prototype.ngOnInit = function () { };
+    MenuComponent.prototype.logout = function () {
+        this.storage.logout();
+        this.router.navigate(['/login']);
+    };
+    MenuComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-menu',
+            template: __webpack_require__(/*! ./menu.component.html */ "./src/app/menu/menu.component.html"),
+            styles: [__webpack_require__(/*! ./menu.component.css */ "./src/app/menu/menu.component.css")]
+        }),
+        __metadata("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_1__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], MenuComponent);
+    return MenuComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/photo-details/photo-details.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/photo-details/photo-details.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "img {\r\n    border: 5px solid #fff;\r\n    border-radius: 4px;\r\n    width: 100%;\r\n    height: 100%\r\n  }\r\n\r\n  h2{\r\n      margin-top: 20px;\r\n      word-wrap: break-word;\r\n  }\r\n\r\n  .shadow{\r\n    background-color: rgba(0,0,0,0.6);\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGhvdG8tZGV0YWlscy9waG90by1kZXRhaWxzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxzQkFBc0I7SUFDdEIsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWDtFQUNGOztFQUVBO01BQ0ksZ0JBQWdCO01BQ2hCLHFCQUFxQjtFQUN6Qjs7RUFFQTtJQUNFLGlDQUFpQztFQUNuQyIsImZpbGUiOiJzcmMvYXBwL3Bob3RvLWRldGFpbHMvcGhvdG8tZGV0YWlscy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW1nIHtcclxuICAgIGJvcmRlcjogNXB4IHNvbGlkICNmZmY7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwJVxyXG4gIH1cclxuXHJcbiAgaDJ7XHJcbiAgICAgIG1hcmdpbi10b3A6IDIwcHg7XHJcbiAgICAgIHdvcmQtd3JhcDogYnJlYWstd29yZDtcclxuICB9XHJcblxyXG4gIC5zaGFkb3d7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLDAuNik7XHJcbiAgfVxyXG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/photo-details/photo-details.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/photo-details/photo-details.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row shadow\" *ngFor=\"let data of photo\">\n  <div class=\"col-md-6\">\n    <h2>User: {{data.username}}</h2>\n  </div>\n  <div class=\"col-md-6\">\n    <h2>{{data.email}}</h2>\n  </div>\n  <div class=\"col-md-6\">\n    <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes || 0).toFixed(2)}}</p>\n  </div>\n  <div class=\"col-md-6\">\n    <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\n  </div>\n  <img  src={{data.url}}>\n  <div class=\"col-md-12\">\n    <h2>{{data.title}}</h2>\n    <p>{{data.description}}</p>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/photo-details/photo-details.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/photo-details/photo-details.component.ts ***!
+  \**********************************************************/
+/*! exports provided: PhotoDetailsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoDetailsComponent", function() { return PhotoDetailsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
@@ -495,44 +593,197 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var RankingComponent = /** @class */ (function () {
-    function RankingComponent(storage, router) {
+
+var PhotoDetailsComponent = /** @class */ (function () {
+    function PhotoDetailsComponent(routeid, storage, router) {
+        this.routeid = routeid;
         this.storage = storage;
         this.router = router;
-        this.photos = null;
-        this.users = null;
-        this.message = "Ranking not available";
-        this.photoUser = true;
-        this.raking();
     }
-    RankingComponent.prototype.ngOnInit = function () {
-    };
-    RankingComponent.prototype.raking = function () {
+    PhotoDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.photoUser = true;
-        this.storage.ranking().then(function (res) { return _this.photos = res; });
+        this.routeid.params.subscribe(function (params) {
+            _this.loadDetail(params['id']);
+        });
     };
-    RankingComponent.prototype.userraking = function () {
+    PhotoDetailsComponent.prototype.loadDetail = function (id) {
         var _this = this;
-        this.photoUser = false;
-        this.storage.userranking().then(function (res) { return _this.users = res; });
+        this.storage.photo(id).then(function (res) { return _this.photo = res; });
     };
-    RankingComponent.prototype.ViewphotoDetail = function (photo_id) {
+    PhotoDetailsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-photo-details',
+            template: __webpack_require__(/*! ./photo-details.component.html */ "./src/app/photo-details/photo-details.component.html"),
+            styles: [__webpack_require__(/*! ./photo-details.component.css */ "./src/app/photo-details/photo-details.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], PhotoDetailsComponent);
+    return PhotoDetailsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/rank-photos/rank-photos.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/rank-photos/rank-photos.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".album{\r\n    position: relative;\r\n    padding-top: 2%;\r\n}\r\n\r\n.card{\r\n    width: 18rem;\r\n    margin: 0 auto;\r\n    float: none; \r\n}\r\n\r\n.pointer{\r\n    cursor: pointer;\r\n}\r\n\r\nh1{\r\nmargin-top:20px;\r\n}\r\n\r\n.container{\r\n    height: auto;\r\n}\r\n\r\np{\r\n    font-size: 18px;\r\n    margin-top: 0px;\r\n    margin-bottom: 2px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmFuay1waG90b3MvcmFuay1waG90b3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGtCQUFrQjtJQUNsQixlQUFlO0FBQ25COztBQUVBO0lBQ0ksWUFBWTtJQUNaLGNBQWM7SUFDZCxXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxlQUFlO0FBQ25COztBQUVBO0FBQ0EsZUFBZTtBQUNmOztBQUVBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLGVBQWU7SUFDZixlQUFlO0lBQ2Ysa0JBQWtCO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvcmFuay1waG90b3MvcmFuay1waG90b3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hbGJ1bXtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHBhZGRpbmctdG9wOiAyJTtcclxufVxyXG5cclxuLmNhcmR7XHJcbiAgICB3aWR0aDogMThyZW07XHJcbiAgICBtYXJnaW46IDAgYXV0bztcclxuICAgIGZsb2F0OiBub25lOyBcclxufVxyXG5cclxuLnBvaW50ZXJ7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbmgxe1xyXG5tYXJnaW4tdG9wOjIwcHg7XHJcbn1cclxuXHJcbi5jb250YWluZXJ7XHJcbiAgICBoZWlnaHQ6IGF1dG87XHJcbn1cclxuXHJcbnB7XHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBtYXJnaW4tdG9wOiAwcHg7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAycHg7XHJcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/rank-photos/rank-photos.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/rank-photos/rank-photos.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-12\">\n    <h1 class=\"center\">Photos ranking</h1>\n  </div>\n  <div class=\"col-md-12\" *ngIf=\"message\">\n    {{message}}\n  </div>\n\n  <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of photos;  index as i\">\n    <div class=\"card\">\n      <a class=\"pointer\" (click)=\"ViewphotoDetail(data.ID)\" target=\"_blank\">\n          <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\n          <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}} >\n      </a>\n      <div class=\"card-body\" *ngIf=\"photos\">\n        <p>User: {{data.username}}</p>\n        <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\n          0).toFixed(2)}}</p>\n        <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\n        <p>Postion: <i class=\"fas fa-trophy\" aria-hidden=\"true\"></i>{{i+1}} </p>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/rank-photos/rank-photos.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/rank-photos/rank-photos.component.ts ***!
+  \******************************************************/
+/*! exports provided: RankPhotosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RankPhotosComponent", function() { return RankPhotosComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var RankPhotosComponent = /** @class */ (function () {
+    function RankPhotosComponent(storage, router) {
+        this.storage = storage;
+        this.router = router;
+        this.message = null;
+    }
+    RankPhotosComponent.prototype.ngOnInit = function () {
+        this.rankPhotos();
+    };
+    RankPhotosComponent.prototype.rankPhotos = function () {
+        var _this = this;
+        this.storage.photosRaking().then(function (res) {
+            if (res.length == 0)
+                _this.message = "Photos ranking not available";
+            else
+                _this.photos = res;
+        });
+    };
+    RankPhotosComponent.prototype.ViewphotoDetail = function (photo_id) {
         var url = "/photo/" + photo_id;
         this.router.navigateByUrl(url);
     };
-    RankingComponent.prototype.back = function () {
-        this.router.navigate(['/home']);
-    };
-    RankingComponent = __decorate([
+    RankPhotosComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-ranking',
-            template: __webpack_require__(/*! ./ranking.component.html */ "./src/app/ranking/ranking.component.html"),
-            styles: [__webpack_require__(/*! ./ranking.component.css */ "./src/app/ranking/ranking.component.css")]
+            selector: 'app-rank-photos',
+            template: __webpack_require__(/*! ./rank-photos.component.html */ "./src/app/rank-photos/rank-photos.component.html"),
+            styles: [__webpack_require__(/*! ./rank-photos.component.css */ "./src/app/rank-photos/rank-photos.component.css")]
         }),
         __metadata("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
-    ], RankingComponent);
-    return RankingComponent;
+    ], RankPhotosComponent);
+    return RankPhotosComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/rank-users/rank-users.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/rank-users/rank-users.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".container{\r\n    height: auto;\r\n}\r\n\r\nh1{\r\n    margin-top:20px\r\n}\r\n\r\np{\r\n    margin-bottom: 20px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmFuay11c2Vycy9yYW5rLXVzZXJzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0k7QUFDSjs7QUFFQTtJQUNJLG1CQUFtQjtBQUN2QiIsImZpbGUiOiJzcmMvYXBwL3JhbmstdXNlcnMvcmFuay11c2Vycy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lcntcclxuICAgIGhlaWdodDogYXV0bztcclxufVxyXG5cclxuaDF7XHJcbiAgICBtYXJnaW4tdG9wOjIwcHhcclxufVxyXG5cclxucHtcclxuICAgIG1hcmdpbi1ib3R0b206IDIwcHg7XHJcbn1cclxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/rank-users/rank-users.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/rank-users/rank-users.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <h1 class=\"center\">Users ranking</h1>\n    </div>\n    <div class=\"col-md-12\" *ngIf=\"message\">\n      <p>{{message}}</p>\n    </div>\n\n    <div class=\"col-lg-12\" *ngFor=\"let user of users;  index as i\">\n      <p class=\"center\"><i class=\"fas fa-trophy\"></i> {{i+1}}\n        User: {{user.username}}\n        Average stars: <i class=\"fa fa-star\"></i>{{(user.sumvotes/user.nvotes ||\n        0).toFixed(2)}}\n        Users voted: <i class=\"fa fa-users\"></i>{{user.nvotes}}\n        Photos: <i class=\"far fa-image\"></i>{{user.nphotos}}\n      </p>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/rank-users/rank-users.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/rank-users/rank-users.component.ts ***!
+  \****************************************************/
+/*! exports provided: RankUsersComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RankUsersComponent", function() { return RankUsersComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var RankUsersComponent = /** @class */ (function () {
+    function RankUsersComponent(storage, router) {
+        this.storage = storage;
+        this.router = router;
+        this.users = null;
+        this.message = null;
+    }
+    RankUsersComponent.prototype.ngOnInit = function () {
+        this.userRaking();
+    };
+    RankUsersComponent.prototype.userRaking = function () {
+        var _this = this;
+        this.storage.userRaking().then(function (res) {
+            if (res.length == 0)
+                _this.message = "Users ranking not available";
+            else
+                _this.users = res;
+        });
+    };
+    RankUsersComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-rank-users',
+            template: __webpack_require__(/*! ./rank-users.component.html */ "./src/app/rank-users/rank-users.component.html"),
+            styles: [__webpack_require__(/*! ./rank-users.component.css */ "./src/app/rank-users/rank-users.component.css")]
+        }),
+        __metadata("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], RankUsersComponent);
+    return RankUsersComponent;
 }());
 
 
@@ -546,7 +797,7 @@ var RankingComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".card{\r\n    height: auto;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2lnLXVwL3NpZy11cC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtBQUNoQiIsImZpbGUiOiJzcmMvYXBwL3NpZy11cC9zaWctdXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jYXJke1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -557,7 +808,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"d-flex justify-content-center h-100\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h3>Sign Up</h3>\n            </div>\n            <div class=\"card-body\">\n                <form #sigUpForm=\"ngForm\" (ngSubmit)=\"sigup(sigUpForm);\">\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n                        </div>\n                        <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Username\" class=\"form-control\"\n                            ngModel required>\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n                        </div>\n                        <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\"\n                            ngModel required>\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-envelope\"></i></span>\n                        </div>\n                        <input type=\"email\" id=\"eamil\" name=\"email\" placeholder=\"Email\" class=\"form-control\" ngModel\n                            required>\n                    </div>\n                    <div class=\"form-group\">\n                        <input type=\"submit\" value=\"Sig Up\" class=\"btn float-right yellow\">\n                    </div>\n                </form>\n                <div class=\"alert alert-danger form-group\" role=\"alert\" *ngIf=\"sigupAlert\">{{sigupAlert}}</div>\n            </div>\n            <div class=\"card-footer\">\n                <div class=\"d-flex justify-content-center links\">\n                    Do you have an account?<a href=\"/login\">Sign In</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"d-flex justify-content-center h-100\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h1>Sign Up</h1>\n            </div>\n            <div class=\"card-body\">\n                <form #sigUpForm=\"ngForm\" (ngSubmit)=\"sigup(sigUpForm);\">\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n                        </div>\n                        <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Username\" class=\"form-control\"\n                            ngModel required>\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n                        </div>\n                        <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\"\n                            ngModel required>\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-envelope\"></i></span>\n                        </div>\n                        <input type=\"email\" id=\"eamil\" name=\"email\" placeholder=\"Email\" class=\"form-control\" ngModel\n                            required>\n                    </div>\n                    <div class=\"form-group\">\n                        <input type=\"submit\" value=\"Sig Up\" class=\"btn float-right yellow\">\n                    </div>\n                </form>\n            </div>\n            <div class=\"card-footer\">\n                <div class=\"alert alert-danger form-group\" role=\"alert\" *ngIf=\"sigupAlert\">{{sigupAlert}}</div>\n                <div class=\"d-flex justify-content-center links\">\n                    Do you have an account?<a href=\"/login\">Login</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -596,8 +847,7 @@ var SigUpComponent = /** @class */ (function () {
     };
     SigUpComponent.prototype.sigup = function (data) {
         var _this = this;
-        console.log("sigup");
-        if (data.valid) {
+        if (data.valid && this.validationUser(data.value.username) && this.validateEmail(data.value.email)) {
             this.storage
                 .createUser(data.value.username, data.value.password, data.value.email)
                 .subscribe(function (data) {
@@ -608,8 +858,15 @@ var SigUpComponent = /** @class */ (function () {
             });
         }
         else {
-            this.sigupAlert = 'One ore more fields missing';
+            this.sigupAlert = 'Not valid fields';
         }
+    };
+    SigUpComponent.prototype.validateEmail = function (email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase()) && email.length < 64;
+    };
+    SigUpComponent.prototype.validationUser = function (user) {
+        return user.length < 64;
     };
     SigUpComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -687,7 +944,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 var StorageService = /** @class */ (function () {
     function StorageService(http) {
         this.http = http;
-        this.base_url = "http://ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000";
+        this.base_url = "http://127.0.0.1:3000"; //http://ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000
         this.getToken();
     }
     StorageService.prototype.getToken = function () {
@@ -706,13 +963,20 @@ var StorageService = /** @class */ (function () {
     StorageService.prototype.createUser = function (username, password, email) {
         return this.http.post(this.base_url + '/sigup', { username: username, password: password, email: email });
     };
-    StorageService.prototype.upload = function (file, user_id) {
+    StorageService.prototype.upload = function (file, userid, title, description) {
         var formData = new FormData();
-        formData.append('photo', file, user_id + "_" + file.name);
+        formData.append('photo', file);
+        formData.append('userid', userid);
+        formData.append('title', title);
+        formData.append('description', description);
         return this.http.post(this.base_url + '/upload', formData, this.options);
     };
-    StorageService.prototype.vote = function (vote, id_photo, id_user) {
-        return this.http.post(this.base_url + '/vote', { vote: vote, id_photo: id_photo, id_user: id_user }, this.options);
+    StorageService.prototype.vote = function (vote, idphoto, iduser) {
+        return this.http.post(this.base_url + '/vote', { vote: vote, idphoto: idphoto, iduser: iduser }, this.options);
+    };
+    StorageService.prototype.deletePhoto = function (idphoto) {
+        console.log(idphoto);
+        return this.http.post(this.base_url + '/deletephoto', { idphoto: idphoto }, this.options);
     };
     StorageService.prototype.load = function (userid) {
         return __awaiter(this, void 0, void 0, function () {
@@ -721,7 +985,7 @@ var StorageService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         form = JSON.stringify({ "userid": userid });
-                        return [4 /*yield*/, fetch(this.base_url + '/home', {
+                        return [4 /*yield*/, fetch(this.base_url + '/photos', {
                                 method: "POST",
                                 body: form,
                                 headers: { 'x-access-token': sessionStorage.getItem('token'), 'Content-Type': 'application/json' }
@@ -748,25 +1012,62 @@ var StorageService = /** @class */ (function () {
             });
         });
     };
-    StorageService.prototype.ranking = function () {
+    StorageService.prototype.photosRaking = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, fetch(this.base_url + '/ranking', this.options).then(function (res) { return res.json(); })];
+                    case 0: return [4 /*yield*/, fetch(this.base_url + '/ranking/photos', this.options).then(function (res) { return res.json(); })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });
     };
-    StorageService.prototype.userranking = function () {
+    StorageService.prototype.userRaking = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, fetch(this.base_url + '/userranking', this.options).then(function (res) { return res.json(); })];
+                    case 0: return [4 /*yield*/, fetch(this.base_url + '/ranking/users', this.options).then(function (res) { return res.json(); })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });
+    };
+    StorageService.prototype.owenPhoto = function (userid) {
+        return __awaiter(this, void 0, void 0, function () {
+            var form;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        form = JSON.stringify({ "userid": userid });
+                        return [4 /*yield*/, fetch(this.base_url + '/owenphotos', {
+                                method: "POST",
+                                body: form,
+                                headers: { 'x-access-token': sessionStorage.getItem('token'), 'Content-Type': 'application/json' }
+                            }).then(function (res) { return res.json(); })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    StorageService.prototype.search = function (name, userid) {
+        return __awaiter(this, void 0, void 0, function () {
+            var form;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        form = JSON.stringify({ "search": name, "userid": userid });
+                        return [4 /*yield*/, fetch(this.base_url + '/search', {
+                                method: "POST",
+                                body: form,
+                                headers: { 'x-access-token': sessionStorage.getItem('token'), 'Content-Type': 'application/json' }
+                            }).then(function (res) { return res.json(); })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    StorageService.prototype.user = function () {
+        return this.http.get(this.base_url + '/user', this.options);
     };
     StorageService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
