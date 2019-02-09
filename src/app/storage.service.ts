@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class StorageService {
-  base_url = "http://192.168.200.76:3000"; //http://ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000
+  base_url = "http://192.168.1.4:3000"; //http://ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000
   options;
   constructor(private http: HttpClient) {
     this.getToken();
@@ -84,7 +84,7 @@ export class StorageService {
   }
 
   async search(name, userid) {
-    let form = JSON.stringify({ "name": name, "userid": userid});
+    let form = JSON.stringify({ "search": name, "userid": userid});
     return await fetch(this.base_url + '/search', {
       method: "POST",
       body: form,

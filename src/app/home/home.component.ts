@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   research(data: NgForm) {
     if (data.valid) {
-      this.storage.search(data.value.search, this.user.id).then(res => console.log(res));
+      this.storage.search(data.value.search, this.user.id).then(res => this.arrayPhoto = res);
     }
   }
 

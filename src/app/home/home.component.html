@@ -1,7 +1,7 @@
 <form class="form-inline row search" #searchForm="ngForm" (ngSubmit)="research(searchForm)">
     <input class="form-control col-md-7" placeholder="Search" id="search" name="search" ngModel required>
     <button class="btn btn-warning col-md-2 margin" type="submit">Search</button>
-    <button class="btn btn-warning col-md-2 margin" type="button">All</button>
+    <button class="btn btn-warning col-md-2 margin" type="button" (click)="loadPhoto()">All</button>
 </form>
 
 <div class="row">

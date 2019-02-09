@@ -74,9 +74,11 @@ margin-left: 4px;
 }
 
 a{
-color: #FFC312; 
+color: #FFC312;
 }
 a :hover{
     color: #fff;
 }
-
+.center{
+  text-align: center;
+}
