@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
           this.loginAlert = null;
         }, err => {
+          data.reset();
           this.loginAlert = err.statusText + (err.error.message ? ` - ${err.error.message}` : '');
         });
     } else {
