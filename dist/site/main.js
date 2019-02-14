@@ -432,7 +432,7 @@ var ManageUserComponent = /** @class */ (function () {
             this.storage.upload(this.file, this.user.id, data.value.title, data.value.description).subscribe(function () {
                 _this.file = null;
                 _this.fileName = null;
-                data.reset();
+                data.resetForm();
                 _this.message = null;
                 _this.uploadDisable = false;
                 _this.owenPhoto();

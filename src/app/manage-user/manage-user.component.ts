@@ -40,7 +40,7 @@ export class ManageUserComponent implements OnInit {
       this.storage.upload(this.file, this.user.id, data.value.title, data.value.description).subscribe(() => {
         this.file = null;
         this.fileName = null;
-        data.reset();
+        data.resetForm();
         this.message = null;
         this.uploadDisable = false;
         this.owenPhoto();
