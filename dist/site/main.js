@@ -429,7 +429,7 @@ var ManageUserComponent = /** @class */ (function () {
         if (this.file && data.valid) {
             this.message = "We have taken your request";
             this.uploadDisable = true;
-            this.storage.upload(this.file, this.user.id, data.value.title, data.value.description).subscribe(function () {
+            this.storage.upload(this.file, this.user.id, data.value.title, data.value.description, this.user.username).subscribe(function () {
                 _this.file = null;
                 _this.fileName = null;
                 data.resetForm();
@@ -559,7 +559,7 @@ var MenuComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "img {\r\n    border: 5px solid #fff;\r\n    border-radius: 4px;\r\n    width: 100%;\r\n    height: 100%\r\n  }\r\n\r\n  h2{\r\n      margin-top: 20px;\r\n      word-wrap: break-word;\r\n  }\r\n\r\n  .shadow{\r\n    background-color: rgba(0,0,0,0.6);\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGhvdG8tZGV0YWlscy9waG90by1kZXRhaWxzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxzQkFBc0I7SUFDdEIsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWDtFQUNGOztFQUVBO01BQ0ksZ0JBQWdCO01BQ2hCLHFCQUFxQjtFQUN6Qjs7RUFFQTtJQUNFLGlDQUFpQztFQUNuQyIsImZpbGUiOiJzcmMvYXBwL3Bob3RvLWRldGFpbHMvcGhvdG8tZGV0YWlscy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW1nIHtcclxuICAgIGJvcmRlcjogNXB4IHNvbGlkICNmZmY7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwJVxyXG4gIH1cclxuXHJcbiAgaDJ7XHJcbiAgICAgIG1hcmdpbi10b3A6IDIwcHg7XHJcbiAgICAgIHdvcmQtd3JhcDogYnJlYWstd29yZDtcclxuICB9XHJcblxyXG4gIC5zaGFkb3d7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLDAuNik7XHJcbiAgfVxyXG4iXX0= */"
+module.exports = "img {\r\n    border: 5px solid #fff;\r\n    border-radius: 4px;\r\n    width: 100%;\r\n    height: 100%\r\n  }\r\n\r\nh2{\r\n  margin-top: 20px;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.shadow{\r\n  background-color: rgba(0,0,0,0.6);\r\n}\r\n\r\n.originalname{\r\n  margin-top: 5px;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGhvdG8tZGV0YWlscy9waG90by1kZXRhaWxzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxzQkFBc0I7SUFDdEIsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWDtFQUNGOztBQUVGO0VBQ0UsZ0JBQWdCO0VBQ2hCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGlDQUFpQztBQUNuQzs7QUFFQTtFQUNFLGVBQWU7QUFDakIiLCJmaWxlIjoic3JjL2FwcC9waG90by1kZXRhaWxzL3Bob3RvLWRldGFpbHMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImltZyB7XHJcbiAgICBib3JkZXI6IDVweCBzb2xpZCAjZmZmO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMCVcclxuICB9XHJcblxyXG5oMntcclxuICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gIHdvcmQtd3JhcDogYnJlYWstd29yZDtcclxufVxyXG5cclxuLnNoYWRvd3tcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLDAuNik7XHJcbn1cclxuXHJcbi5vcmlnaW5hbG5hbWV7XHJcbiAgbWFyZ2luLXRvcDogNXB4O1xyXG59XHJcblxyXG4iXX0= */"
 
 /***/ }),
 
@@ -570,7 +570,7 @@ module.exports = "img {\r\n    border: 5px solid #fff;\r\n    border-radius: 4px
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row shadow\" *ngFor=\"let data of photo\">\r\n  <div class=\"col-md-6\">\r\n    <h2>User: {{data.username}}</h2>\r\n  </div>\r\n  <div class=\"col-md-6\">\r\n    <h2>{{data.email}}</h2>\r\n  </div>\r\n  <div class=\"col-md-6\">\r\n    <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes || 0).toFixed(2)}}</p>\r\n  </div>\r\n  <div class=\"col-md-6\">\r\n    <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\r\n  </div>\r\n  <img  src={{data.url}}>\r\n  <div class=\"col-md-12\">\r\n    <h2>{{data.title}}</h2>\r\n    <p>{{data.description}}</p>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row shadow\" *ngFor=\"let data of photo\">\r\n  <div class=\"col-md-6\">\r\n    <h2>User: {{data.username}}</h2>\r\n  </div>\r\n  <div class=\"col-md-6\">\r\n    <h2>{{data.email}}</h2>\r\n  </div>\r\n  <div class=\"col-md-6\">\r\n    <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes || 0).toFixed(2)}}</p>\r\n  </div>\r\n  <div class=\"col-md-6\">\r\n    <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\r\n  </div>\r\n  <img  src={{data.url}}>\r\n  <div class=\"col-md-12\">\r\n      <h4 class=\"originalname\">{{data.original_name}}</h4>\r\n    </div>\r\n  <div class=\"col-md-12\">\r\n    <h2>{{data.title}}</h2>\r\n    <p>{{data.description}}</p>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -950,7 +950,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 var StorageService = /** @class */ (function () {
     function StorageService(http) {
         this.http = http;
-        this.base_url = "http://ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000";
+        this.base_url = "http://127.0.0.1:3000";
         this.getToken();
     }
     StorageService.prototype.getToken = function () {
@@ -969,12 +969,13 @@ var StorageService = /** @class */ (function () {
     StorageService.prototype.createUser = function (username, password, email) {
         return this.http.post(this.base_url + '/sigup', { username: username, password: password, email: email });
     };
-    StorageService.prototype.upload = function (file, userid, title, description) {
+    StorageService.prototype.upload = function (file, userid, title, description, username) {
         var formData = new FormData();
         formData.append('photo', file);
         formData.append('userid', userid);
         formData.append('title', title);
         formData.append('description', description);
+        formData.append('username', username);
         return this.http.post(this.base_url + '/upload', formData, this.options);
     };
     StorageService.prototype.vote = function (vote, idphoto, iduser) {

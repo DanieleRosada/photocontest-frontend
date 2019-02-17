@@ -37,7 +37,7 @@ export class ManageUserComponent implements OnInit {
     if (this.file && data.valid) {
       this.message = "We have taken your request";
       this.uploadDisable = true;
-      this.storage.upload(this.file, this.user.id, data.value.title, data.value.description).subscribe(() => {
+      this.storage.upload(this.file, this.user.id, data.value.title, data.value.description, this.user.username).subscribe(() => {
         this.file = null;
         this.fileName = null;
         data.resetForm();

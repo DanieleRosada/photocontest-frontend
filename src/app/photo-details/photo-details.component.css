@@ -5,11 +5,16 @@ img {
     height: 100%
   }
 
-  h2{
-      margin-top: 20px;
-      word-wrap: break-word;
-  }
+h2{
+  margin-top: 20px;
+  word-wrap: break-word;
+}
 
-  .shadow{
-    background-color: rgba(0,0,0,0.6);
-  }
+.shadow{
+  background-color: rgba(0,0,0,0.6);
+}
+
+.originalname{
+  margin-top: 5px;
+}
+

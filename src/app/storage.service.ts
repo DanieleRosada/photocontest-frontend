@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class StorageService {
-  base_url = "http://ec2-34-251-72-250.eu-west-1.compute.amazonaws.com:3000";
+  base_url = "http://127.0.0.1:3000";
   options;
   constructor(private http: HttpClient) {
     this.getToken();
@@ -31,12 +31,13 @@ export class StorageService {
     return this.http.post(this.base_url + '/sigup', { username, password, email });
   }
 
-  upload(file, userid, title, description) {
+  upload(file, userid, title, description, username) {
     let formData: FormData = new FormData();
     formData.append('photo', file);
     formData.append('userid', userid);
     formData.append('title', title);
     formData.append('description', description);
+    formData.append('username', username);
     return this.http.post(this.base_url + '/upload', formData, this.options);
   }
 
