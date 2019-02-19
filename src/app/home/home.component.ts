@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit {
   arrayPhoto;
   vote: number;
   votes = [{ "value": 1 }, { "value": 2 }, { "value": 3 }, { "value": 4 }, { "value": 5 }];
-  search = [{ "value": "photo name" }, { "value": "author" }, { "value": "title" }, { "value": "description" }];
   user = JSON.parse(sessionStorage.getItem('token'));
 
 
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadPhoto() {
-    this.storage.load(this.user.id).then(res => this.arrayPhoto = res);
+    this.storage.photos(this.user.id).then(res => this.arrayPhoto = res);
   }
 
   research(data: NgForm) {

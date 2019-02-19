@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet ></router-outlet>\r\n"
+module.exports = "<router-outlet ></router-outlet>\n"
 
 /***/ }),
 
@@ -190,7 +190,7 @@ module.exports = "\r\n.album{\r\n    position: relative;\r\n    padding-top: 5%;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"form-inline row search\" #searchForm=\"ngForm\" (ngSubmit)=\"research(searchForm)\">\r\n    <input class=\"form-control col-md-7\" placeholder=\"Search\" id=\"search\" name=\"search\" ngModel required>\r\n    <button class=\"btn btn-warning col-md-2 margin\" type=\"submit\">Search</button>\r\n    <button class=\"btn btn-warning col-md-2 margin\" type=\"button\" (click)=\"loadPhoto()\">All</button>\r\n</form>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of arrayPhoto\">\r\n        <div class=\"card\">\r\n            <a class=\"pointer\" (click)=\"photoDetail(data.ID)\" target=\"_blank\">\r\n                <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\r\n                <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}} >\r\n            </a>\r\n            <div class=\"card-body\" *ngIf=\"data.voteiduser == this.user.id || data.ID_user == this.user.id\">\r\n                <p>User: {{data.username}}</p>\r\n                <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\r\n                    0).toFixed(2)}}</p>\r\n                <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\r\n            </div>\r\n            <div class=\"card-body\" *ngIf=\"data.voteiduser != this.user.id && data.ID_user != this.user.id\">\r\n                <p>User: {{data.username}}</p>\r\n                <form #likeForm=\"ngForm\" class=\"form-inline row\" (ngSubmit)=\"votePhoto(likeForm, data);\">\r\n                    <select class=\"form-control col-6\" [(ngModel)]=\"data.vote\" name=\"vote\" required>\r\n                        <option *ngFor=\"let vote of votes\" value=\"{{vote.value}}\">{{vote.value}}</option>\r\n                    </select>\r\n                    <input type=\"hidden\" name=\"id\" [(ngModel)]=\"data.ID\" />\r\n                    <button type=\"submit\" class=\"btn btn-warning col-5 offset-1\" [disabled]=\"data.isDisabled\">Vote</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<form class=\"form-inline row search\" #searchForm=\"ngForm\" (ngSubmit)=\"research(searchForm)\">\n    <input class=\"form-control col-md-7\" placeholder=\"Search\" id=\"search\" name=\"search\" ngModel required>\n    <button class=\"btn btn-warning col-md-2 margin\" type=\"submit\">Search</button>\n    <button class=\"btn btn-warning col-md-2 margin\" type=\"button\" (click)=\"loadPhoto()\">All</button>\n</form>\n\n<div class=\"row\">\n    <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of arrayPhoto\">\n        <div class=\"card\">\n            <a class=\"pointer\" (click)=\"photoDetail(data.ID)\" target=\"_blank\">\n                <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\n                <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}} >\n            </a>\n            <div class=\"card-body\" *ngIf=\"data.voteiduser == this.user.id || data.ID_user == this.user.id\">\n                <p>User: {{data.username}}</p>\n                <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\n                    0).toFixed(2)}}</p>\n                <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\n            </div>\n            <div class=\"card-body\" *ngIf=\"data.voteiduser != this.user.id && data.ID_user != this.user.id\">\n                <p>User: {{data.username}}</p>\n                <form #likeForm=\"ngForm\" class=\"form-inline row\" (ngSubmit)=\"votePhoto(likeForm, data);\">\n                    <select class=\"form-control col-6\" [(ngModel)]=\"data.vote\" name=\"vote\" required>\n                        <option *ngFor=\"let vote of votes\" value=\"{{vote.value}}\">{{vote.value}}</option>\n                    </select>\n                    <input type=\"hidden\" name=\"id\" [(ngModel)]=\"data.ID\" />\n                    <button type=\"submit\" class=\"btn btn-warning col-5 offset-1\" [disabled]=\"data.isDisabled\">Vote</button>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -224,7 +224,6 @@ var HomeComponent = /** @class */ (function () {
         this.storage = storage;
         this.router = router;
         this.votes = [{ "value": 1 }, { "value": 2 }, { "value": 3 }, { "value": 4 }, { "value": 5 }];
-        this.search = [{ "value": "photo name" }, { "value": "author" }, { "value": "title" }, { "value": "description" }];
         this.user = JSON.parse(sessionStorage.getItem('token'));
     }
     HomeComponent.prototype.ngOnInit = function () {
@@ -232,7 +231,7 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.loadPhoto = function () {
         var _this = this;
-        this.storage.load(this.user.id).then(function (res) { return _this.arrayPhoto = res; });
+        this.storage.photos(this.user.id).then(function (res) { return _this.arrayPhoto = res; });
     };
     HomeComponent.prototype.research = function (data) {
         var _this = this;
@@ -288,7 +287,7 @@ module.exports = ".card{\r\n    height: auto;\r\n}\r\n/*# sourceMappingURL=data:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"d-flex justify-content-center h-100\">\r\n        <div class=\"card\">\r\n            <div class=\"card-header\">\r\n                <h1>Login</h1>\r\n            </div>\r\n            <div class=\"card-body\">\r\n                <form #loginForm=\"ngForm\" (ngSubmit)=\"login(loginForm);\">\r\n                    <div class=\"input-group form-group\">\r\n                        <div class=\"input-group-prepend\">\r\n                            <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\r\n                        </div>\r\n                        <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Username\" class=\"form-control\" autocomplete=\"username\"\r\n                            ngModel required>\r\n\r\n                    </div>\r\n                    <div class=\"input-group form-group\">\r\n                        <div class=\"input-group-prepend\">\r\n                            <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\r\n                        </div>\r\n                        <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\" autocomplete=\"password\"\r\n                            ngModel required>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <input type=\"submit\" value=\"Login\" class=\"btn float-right yellow\">\r\n                    </div>\r\n                </form>\r\n            </div>\r\n            <div class=\"card-footer\">\r\n                    <div class=\"alert alert-danger form-group\" role=\"alert\" *ngIf=\"loginAlert\">{{loginAlert}}</div>\r\n                <div class=\"d-flex justify-content-center links\">\r\n                    Don't have an account?<a href=\"/sigup\">Sign Up</a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"d-flex justify-content-center h-100\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h1>Login</h1>\n            </div>\n            <div class=\"card-body\">\n                <form #loginForm=\"ngForm\" (ngSubmit)=\"login(loginForm);\">\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n                        </div>\n                        <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Username\" class=\"form-control\" autocomplete=\"username\"\n                            ngModel required>\n\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n                        </div>\n                        <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\" autocomplete=\"password\"\n                            ngModel required>\n                    </div>\n                    <div class=\"form-group\">\n                        <input type=\"submit\" value=\"Login\" class=\"btn float-right yellow\">\n                    </div>\n                </form>\n            </div>\n            <div class=\"card-footer\">\n                    <div class=\"alert alert-danger form-group\" role=\"alert\" *ngIf=\"loginAlert\">{{loginAlert}}</div>\n                <div class=\"d-flex justify-content-center links\">\n                    Don't have an account?<a href=\"/sigup\">Sign Up</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -375,7 +374,7 @@ module.exports = "input[type=\"file\"] {\r\n    display: none;\r\n}\r\n\r\nlabel
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row shadow\">\r\n  <div class=\"col-md-12\">\r\n    <h1 class=\"center\">Insert photo</h1>\r\n  </div>\r\n\r\n  <form #uploadForm=\"ngForm\" (ngSubmit)=\"uploadPhoto(uploadForm)\">\r\n    <div class=\"input-group mb-3 col-md-12\">\r\n      <div class=\"input-group-prepend\">\r\n        <span class=\"input-group-text\" id=\"basic-addon1\">Title</span>\r\n      </div>\r\n      <input type=\"text\" name=\"title\" [(ngModel)]=\"title\" class=\"form-control\" required>\r\n    </div>\r\n\r\n    <div class=\"input-group mb-3 col-md-12\">\r\n      <div class=\"input-group-prepend\">\r\n        <span class=\"input-group-text\">Description</span>\r\n      </div>\r\n      <textarea class=\"form-control\" name=\"description\" [(ngModel)]=\"description\" aria-label=\"With textarea\" required></textarea>\r\n    </div>\r\n\r\n    <div class=\"input-group mb-3 col-md-12\">\r\n      <input type=\"text\" class=\"form-control\" placeholder=\"File explorer\" aria-label=\"Insert url\" value={{fileName}}>\r\n      <div class=\"input-group-append\">\r\n        <label for=\"file-upload\" class=\"btn btn-outline-secondary yellow\">\r\n          <i class=\"far fa-folder\"></i>\r\n        </label>\r\n        <input id=\"file-upload\" type=\"file\" accept=\"image/*\" (change)=\"onFileChange($event)\" required />\r\n        <button class=\"btn btn-outline-secondary yellow\" type=\"submit\" [disabled]=\"uploadDisable\">Upload</button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n  <div class=\"col-md-12\">\r\n    <h4 class=\"center\" *ngIf=\"message\">{{message}}</h4>\r\n  </div>\r\n\r\n\r\n  <div class=\"col-md-12\">\r\n    <h1 class=\"center\">Your data & photo</h1>\r\n  </div>\r\n  <div class=\"col-md-6\">\r\n    <h4 class=\"center\">User: {{user.username}}</h4>\r\n  </div>\r\n  <div class=\"col-md-6 \">\r\n    <h4 class=\"center\">Email: {{user.email}}</h4>\r\n  </div>\r\n</div>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of arrayPhoto\">\r\n    <div class=\"card\">\r\n      <a class=\"pointer\" (click)=\"photoDetail(data.ID)\" target=\"_blank\">\r\n        <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\r\n        <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}}>\r\n      </a>\r\n      <div class=\"card-body\">\r\n        <p>Title: {{data.title.substr(0, 20)}}</p>\r\n        <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\r\n          0).toFixed(2)}}</p>\r\n        <button type=\"button\" class=\"btn btn-warning btn-block\" [disabled]=\"data.isDisabled\" (click)=\"deletePhoto(data.ID, data)\">Delete</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row shadow\">\n  <div class=\"col-md-12\">\n    <h1 class=\"center\">Insert photo</h1>\n  </div>\n\n  <form #uploadForm=\"ngForm\" (ngSubmit)=\"uploadPhoto(uploadForm)\">\n    <div class=\"input-group mb-3 col-md-12\">\n      <div class=\"input-group-prepend\">\n        <span class=\"input-group-text\" id=\"basic-addon1\">Title</span>\n      </div>\n      <input type=\"text\" name=\"title\" [(ngModel)]=\"title\" class=\"form-control\" required>\n    </div>\n\n    <div class=\"input-group mb-3 col-md-12\">\n      <div class=\"input-group-prepend\">\n        <span class=\"input-group-text\">Description</span>\n      </div>\n      <textarea class=\"form-control\" name=\"description\" [(ngModel)]=\"description\" aria-label=\"With textarea\" required></textarea>\n    </div>\n\n    <div class=\"input-group mb-3 col-md-12\">\n      <input type=\"text\" class=\"form-control\" placeholder=\"File explorer\" aria-label=\"Insert url\" value={{fileName}}>\n      <div class=\"input-group-append\">\n        <label for=\"file-upload\" class=\"btn btn-outline-secondary yellow\">\n          <i class=\"far fa-folder\"></i>\n        </label>\n        <input #fileInput id=\"file-upload\" type=\"file\" accept=\"image/*\" (change)=\"onFileChange($event)\" required />\n        <button class=\"btn btn-outline-secondary yellow\" type=\"submit\" [disabled]=\"uploadDisable\">Upload</button>\n      </div>\n    </div>\n  </form>\n  <div class=\"col-md-12\">\n    <h4 class=\"center\" *ngIf=\"message\">{{message}}</h4>\n  </div>\n\n\n  <div class=\"col-md-12\">\n    <h1 class=\"center\">Your data & photo</h1>\n  </div>\n  <div class=\"col-md-6\">\n    <h4 class=\"center\">User: {{user.username}}</h4>\n  </div>\n  <div class=\"col-md-6 \">\n    <h4 class=\"center\">Email: {{user.email}}</h4>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of arrayPhoto\">\n    <div class=\"card\">\n      <a class=\"pointer\" (click)=\"photoDetail(data.ID)\" target=\"_blank\">\n        <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\n        <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}}>\n      </a>\n      <div class=\"card-body\">\n        <p>Title: {{data.title.substr(0, 20)}}</p>\n        <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\n          0).toFixed(2)}}</p>\n        <button type=\"button\" class=\"btn btn-warning btn-block\" [disabled]=\"data.isDisabled\" (click)=\"deletePhoto(data.ID, data)\">Delete</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -422,7 +421,12 @@ var ManageUserComponent = /** @class */ (function () {
     };
     ManageUserComponent.prototype.onFileChange = function (event) {
         this.file = event.target.files[0];
-        this.fileName = this.file.name;
+        if (this.file) {
+            this.fileName = this.file.name;
+        }
+        else {
+            this.fileName = "";
+        }
     };
     ManageUserComponent.prototype.uploadPhoto = function (data) {
         var _this = this;
@@ -430,8 +434,8 @@ var ManageUserComponent = /** @class */ (function () {
             this.message = "We have taken your request";
             this.uploadDisable = true;
             this.storage.upload(this.file, this.user.id, data.value.title, data.value.description, this.user.username).subscribe(function () {
-                _this.file = null;
-                _this.fileName = null;
+                _this.fileInput.nativeElement.value = "";
+                _this.fileName = "";
                 data.resetForm();
                 _this.message = null;
                 _this.uploadDisable = false;
@@ -457,8 +461,11 @@ var ManageUserComponent = /** @class */ (function () {
         var url = "/photo/" + photo_id;
         this.router.navigateByUrl(url);
     };
-    ManageUserComponent = __decorate([
+    __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('fileInput'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], ManageUserComponent.prototype, "fileInput", void 0);
+    ManageUserComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-manage-user',
             template: __webpack_require__(/*! ./manage-user.component.html */ "./src/app/manage-user/manage-user.component.html"),
@@ -491,7 +498,7 @@ module.exports = ".bg-light {\r\n    background-color: #FFC312 !important;\r\n}\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n  <a class=\"navbar-brand\" routerLink=\"/home\"> <img src=\"../../favicon.ico\" style=\"max-height: 70%; max-width: 70%;\" /></a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\r\n        <a class=\"nav-link\" routerLink=\"/home\">Home</a>\r\n      </li>\r\n      <li class=\"nav-item\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\r\n        <a class=\"nav-link\" routerLink=\"/user\">Manage User</a>\r\n      </li>\r\n      <li class=\"nav-item dropdown\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\r\n        <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\r\n          aria-expanded=\"false\">\r\n          Rank\r\n        </a>\r\n        <div class=\"dropdown-menu\">\r\n          <a class=\"dropdown-item\" routerLink=\"/rankphotos\">Photos</a>\r\n          <a class=\"dropdown-item\" routerLink=\"/rankusers\">Users</a>\r\n        </div>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link pointer\" (click)=\"logout()\">Logout</a>\r\n      </li>\r\n    </ul>\r\n    <span class=\"navbar-text\">\r\n      Welcome {{user.username}}\r\n    </span>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container\">\r\n  <router-outlet></router-outlet>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <a class=\"navbar-brand\" routerLink=\"/home\"> <img src=\"../../favicon.ico\" style=\"max-height: 70%; max-width: 70%;\" /></a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\n        <a class=\"nav-link\" routerLink=\"/home\">Home</a>\n      </li>\n      <li class=\"nav-item\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\n        <a class=\"nav-link\" routerLink=\"/user\">Manage User</a>\n      </li>\n      <li class=\"nav-item dropdown\" data-toggle=\"collapse\" data-target=\".navbar-collapse.show\">\n        <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\n          aria-expanded=\"false\">\n          Rank\n        </a>\n        <div class=\"dropdown-menu\">\n          <a class=\"dropdown-item\" routerLink=\"/rankphotos\">Photos</a>\n          <a class=\"dropdown-item\" routerLink=\"/rankusers\">Users</a>\n        </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link pointer\" (click)=\"logout()\">Logout</a>\n      </li>\n    </ul>\n    <span class=\"navbar-text\">\n      Welcome {{user.username}}\n    </span>\n  </div>\n</nav>\n\n<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
@@ -649,7 +656,7 @@ module.exports = ".album{\r\n    position: relative;\r\n    padding-top: 2%;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <h1 class=\"center\">Photos ranking</h1>\r\n  </div>\r\n  <div class=\"col-md-12\" *ngIf=\"message\">\r\n    {{message}}\r\n  </div>\r\n\r\n  <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of photos;  index as i\">\r\n    <div class=\"card\">\r\n      <a class=\"pointer\" (click)=\"ViewphotoDetail(data.ID)\" target=\"_blank\">\r\n          <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\r\n          <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}} >\r\n      </a>\r\n      <div class=\"card-body\" *ngIf=\"photos\">\r\n        <p>User: {{data.username}}</p>\r\n        <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\r\n          0).toFixed(2)}}</p>\r\n        <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\r\n        <p>Postion: <i class=\"fas fa-trophy\" aria-hidden=\"true\"></i>{{i+1}} </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-12\">\n    <h1 class=\"center\">Photos ranking</h1>\n  </div>\n  <div class=\"col-md-12\" *ngIf=\"message\">\n    {{message}}\n  </div>\n\n  <div class=\"col-lg-4 col-md-6 album\" *ngFor=\"let data of photos;  index as i\">\n    <div class=\"card\">\n      <a class=\"pointer\" (click)=\"ViewphotoDetail(data.ID)\" target=\"_blank\">\n          <img *ngIf=\"!data.thumbnail\" class=\"card-img-top\" src={{data.url}} style=\"max-height: 220px; width: 100%;\">\n          <img *ngIf=\"data.thumbnail\" class=\"card-img-top\" src={{data.thumbnail}} >\n      </a>\n      <div class=\"card-body\" *ngIf=\"photos\">\n        <p>User: {{data.username}}</p>\n        <p>Average stars: <i class=\"fa fa-star\" aria-hidden=\"true\"></i>{{(data.sumvotes/data.nvotes ||\n          0).toFixed(2)}}</p>\n        <p>Users voted: <i class=\"fa fa-users\" aria-hidden=\"true\"></i>{{data.nvotes}}</p>\n        <p>Postion: <i class=\"fas fa-trophy\" aria-hidden=\"true\"></i>{{i+1}} </p>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -733,7 +740,7 @@ module.exports = ".container{\r\n    height: auto;\r\n}\r\n\r\nh1{\r\n    margin
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <h1 class=\"center\">Users ranking</h1>\r\n    </div>\r\n    <div class=\"col-md-12\" *ngIf=\"message\">\r\n      <p>{{message}}</p>\r\n    </div>\r\n\r\n    <div class=\"col-lg-12\" *ngFor=\"let user of users;  index as i\">\r\n      <p class=\"center\"><i class=\"fas fa-trophy\"></i> {{i+1}}\r\n        User: {{user.username}}\r\n        Average stars: <i class=\"fa fa-star\"></i>{{(user.sumvotes/user.nvotes ||\r\n        0).toFixed(2)}}\r\n        Users voted: <i class=\"fa fa-users\"></i>{{user.nvotes}}\r\n        Photos: <i class=\"far fa-image\"></i>{{user.nphotos}}\r\n      </p>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <h1 class=\"center\">Users ranking</h1>\n    </div>\n    <div class=\"col-md-12\" *ngIf=\"message\">\n      <p>{{message}}</p>\n    </div>\n\n    <div class=\"col-lg-12\" *ngFor=\"let user of users;  index as i\">\n      <p class=\"center\"><i class=\"fas fa-trophy\"></i> {{i+1}}\n        User: {{user.username}}\n        Average stars: <i class=\"fa fa-star\"></i>{{(user.sumvotes/user.nvotes ||\n        0).toFixed(2)}}\n        Users voted: <i class=\"fa fa-users\"></i>{{user.nvotes}}\n        Photos: <i class=\"far fa-image\"></i>{{user.nphotos}}\n      </p>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -814,7 +821,7 @@ module.exports = ".card{\r\n    height: auto;\r\n}\r\n/*# sourceMappingURL=data:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"d-flex justify-content-center h-100\">\r\n        <div class=\"card\">\r\n            <div class=\"card-header\">\r\n                <h1>Sign Up</h1>\r\n            </div>\r\n            <div class=\"card-body\">\r\n                <form #sigUpForm=\"ngForm\" (ngSubmit)=\"sigup(sigUpForm);\">\r\n                    <div class=\"input-group form-group\">\r\n                        <div class=\"input-group-prepend\">\r\n                            <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\r\n                        </div>\r\n                        <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Username\" class=\"form-control\"\r\n                            ngModel required>\r\n                    </div>\r\n                    <div class=\"input-group form-group\">\r\n                        <div class=\"input-group-prepend\">\r\n                            <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\r\n                        </div>\r\n                        <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\"\r\n                            ngModel required>\r\n                    </div>\r\n                    <div class=\"input-group form-group\">\r\n                        <div class=\"input-group-prepend\">\r\n                            <span class=\"input-group-text\"><i class=\"fas fa-envelope\"></i></span>\r\n                        </div>\r\n                        <input type=\"email\" id=\"eamil\" name=\"email\" placeholder=\"Email\" class=\"form-control\" ngModel\r\n                            required>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <input type=\"submit\" value=\"Sig Up\" class=\"btn float-right yellow\">\r\n                    </div>\r\n                </form>\r\n            </div>\r\n            <div class=\"card-footer\">\r\n                <div class=\"alert alert-danger form-group\" role=\"alert\" *ngIf=\"sigupAlert\">{{sigupAlert}}</div>\r\n                <div class=\"d-flex justify-content-center links\">\r\n                    Do you have an account?<a href=\"/login\">Login</a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"d-flex justify-content-center h-100\">\n        <div class=\"card\">\n            <div class=\"card-header\">\n                <h1>Sign Up</h1>\n            </div>\n            <div class=\"card-body\">\n                <form #sigUpForm=\"ngForm\" (ngSubmit)=\"sigup(sigUpForm);\">\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n                        </div>\n                        <input type=\"text\" id=\"username\" name=\"username\" placeholder=\"Username\" class=\"form-control\"\n                            ngModel required>\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n                        </div>\n                        <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\"\n                            ngModel required>\n                    </div>\n                    <div class=\"input-group form-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"><i class=\"fas fa-envelope\"></i></span>\n                        </div>\n                        <input type=\"email\" id=\"eamil\" name=\"email\" placeholder=\"Email\" class=\"form-control\" ngModel\n                            required>\n                    </div>\n                    <div class=\"form-group\">\n                        <input type=\"submit\" value=\"Sig Up\" class=\"btn float-right yellow\">\n                    </div>\n                </form>\n            </div>\n            <div class=\"card-footer\">\n                <div class=\"alert alert-danger form-group\" role=\"alert\" *ngIf=\"sigupAlert\">{{sigupAlert}}</div>\n                <div class=\"d-flex justify-content-center links\">\n                    Do you have an account?<a href=\"/login\">Login</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -953,12 +960,16 @@ var StorageService = /** @class */ (function () {
         this.base_url = "http://127.0.0.1:3000";
         this.getToken();
     }
+    //User management
     StorageService.prototype.getToken = function () {
         this.options = { headers: { 'x-access-token': sessionStorage.getItem('token') } };
     };
     StorageService.prototype.saveToken = function (token) {
         sessionStorage.setItem('token', JSON.stringify(token));
         this.getToken();
+    };
+    StorageService.prototype.user = function () {
+        return this.http.get(this.base_url + '/user', this.options);
     };
     StorageService.prototype.login = function (username, password) {
         return this.http.post(this.base_url + '/login', { username: username, password: password });
@@ -969,22 +980,8 @@ var StorageService = /** @class */ (function () {
     StorageService.prototype.createUser = function (username, password, email) {
         return this.http.post(this.base_url + '/sigup', { username: username, password: password, email: email });
     };
-    StorageService.prototype.upload = function (file, userid, title, description, username) {
-        var formData = new FormData();
-        formData.append('photo', file);
-        formData.append('userid', userid);
-        formData.append('title', title);
-        formData.append('description', description);
-        formData.append('username', username);
-        return this.http.post(this.base_url + '/upload', formData, this.options);
-    };
-    StorageService.prototype.vote = function (vote, idphoto, iduser) {
-        return this.http.post(this.base_url + '/vote', { vote: vote, idphoto: idphoto, iduser: iduser }, this.options);
-    };
-    StorageService.prototype.deletePhoto = function (idphoto) {
-        return this.http.post(this.base_url + '/deletephoto', { idphoto: idphoto }, this.options);
-    };
-    StorageService.prototype.load = function (userid) {
+    //They return photos
+    StorageService.prototype.photos = function (userid) {
         return __awaiter(this, void 0, void 0, function () {
             var form;
             return __generator(this, function (_a) {
@@ -1013,26 +1010,6 @@ var StorageService = /** @class */ (function () {
                                 body: form,
                                 headers: { 'x-access-token': sessionStorage.getItem('token'), 'Content-Type': 'application/json' }
                             }).then(function (res) { return res.json(); })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    StorageService.prototype.photosRaking = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, fetch(this.base_url + '/ranking/photos', this.options).then(function (res) { return res.json(); })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    StorageService.prototype.userRaking = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, fetch(this.base_url + '/ranking/users', this.options).then(function (res) { return res.json(); })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -1072,8 +1049,42 @@ var StorageService = /** @class */ (function () {
             });
         });
     };
-    StorageService.prototype.user = function () {
-        return this.http.get(this.base_url + '/user', this.options);
+    //Ranking
+    StorageService.prototype.photosRaking = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, fetch(this.base_url + '/ranking/photos', this.options).then(function (res) { return res.json(); })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    StorageService.prototype.userRaking = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, fetch(this.base_url + '/ranking/users', this.options).then(function (res) { return res.json(); })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    //Photo management
+    StorageService.prototype.upload = function (file, userid, title, description, username) {
+        var formData = new FormData();
+        formData.append('photo', file);
+        formData.append('userid', userid);
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('username', username);
+        return this.http.post(this.base_url + '/upload', formData, this.options);
+    };
+    StorageService.prototype.vote = function (vote, idphoto, iduser) {
+        return this.http.post(this.base_url + '/vote', { vote: vote, idphoto: idphoto, iduser: iduser }, this.options);
+    };
+    StorageService.prototype.deletePhoto = function (idphoto) {
+        return this.http.post(this.base_url + '/deletephoto', { idphoto: idphoto }, this.options);
     };
     StorageService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1149,7 +1160,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\danie\Documents\TSAC2\photocontest\frontend\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Utente\Documents\2018-2019\Cloud enterprise in AWS\photoContest\site\src\main.ts */"./src/main.ts");
 
 
 /***/ })

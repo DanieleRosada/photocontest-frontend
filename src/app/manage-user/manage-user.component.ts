@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../storage.service';
 import { NgForm } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 
-@ViewChild('fileInput')
 @Component({
   selector: 'app-manage-user',
   templateUrl: './manage-user.component.html',
   styleUrls: ['./manage-user.component.css']
 })
 export class ManageUserComponent implements OnInit {
+  @ViewChild('fileInput') fileInput : ElementRef;
   file: File;
   fileName: string;
   arrayPhoto;
@@ -30,7 +30,14 @@ export class ManageUserComponent implements OnInit {
 
   onFileChange(event) {
     this.file = event.target.files[0];
-    this.fileName = this.file.name;
+    if (this.file)
+    {
+      this.fileName = this.file.name;
+    }
+    else
+    {
+      this.fileName = "";
+    }
   }
 
   uploadPhoto(data: NgForm) {
@@ -38,8 +45,8 @@ export class ManageUserComponent implements OnInit {
       this.message = "We have taken your request";
       this.uploadDisable = true;
       this.storage.upload(this.file, this.user.id, data.value.title, data.value.description, this.user.username).subscribe(() => {
-        this.file = null;
-        this.fileName = null;
+        this.fileInput.nativeElement.value = "";
+        this.fileName = "";
         data.resetForm();
         this.message = null;
         this.uploadDisable = false;

@@ -24,7 +24,7 @@
         <label for="file-upload" class="btn btn-outline-secondary yellow">
           <i class="far fa-folder"></i>
         </label>
-        <input id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" required />
+        <input #fileInput id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" required />
         <button class="btn btn-outline-secondary yellow" type="submit" [disabled]="uploadDisable">Upload</button>
       </div>
     </div>

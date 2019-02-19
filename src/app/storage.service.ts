@@ -6,10 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class StorageService {
   base_url = "http://127.0.0.1:3000";
   options;
+
   constructor(private http: HttpClient) {
     this.getToken();
   }
 
+  //User management
   getToken() {
     this.options = { headers: { 'x-access-token': sessionStorage.getItem('token') } };
   }
@@ -17,6 +19,10 @@ export class StorageService {
   saveToken(token) {
     sessionStorage.setItem('token', JSON.stringify(token));
     this.getToken();
+  }
+
+  user() {
+    return this.http.get(this.base_url + '/user', this.options);
   }
 
   login(username, password) {
@@ -31,25 +37,10 @@ export class StorageService {
     return this.http.post(this.base_url + '/sigup', { username, password, email });
   }
 
-  upload(file, userid, title, description, username) {
-    let formData: FormData = new FormData();
-    formData.append('photo', file);
-    formData.append('userid', userid);
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('username', username);
-    return this.http.post(this.base_url + '/upload', formData, this.options);
-  }
 
-  vote(vote, idphoto, iduser) {
-    return this.http.post(this.base_url + '/vote', { vote, idphoto, iduser }, this.options);
-  }
 
-  deletePhoto(idphoto) {
-    return this.http.post(this.base_url + '/deletephoto', { idphoto }, this.options);
-  }
-
-  async load(userid) {
+  //They return photos
+  async photos(userid) {
     let form = JSON.stringify({ "userid": userid });
     return await fetch(this.base_url + '/photos', {
       method: "POST",
@@ -67,13 +58,6 @@ export class StorageService {
     }).then(res => res.json());
   }
 
-  async photosRaking() {
-    return await fetch(this.base_url + '/ranking/photos', this.options).then(res => res.json());
-  }
-  async userRaking() {
-    return await fetch(this.base_url + '/ranking/users', this.options).then(res => res.json());
-  }
-
   async owenPhoto(userid) {
     let form = JSON.stringify({ "userid": userid });
     return await fetch(this.base_url + '/owenphotos', {
@@ -84,7 +68,7 @@ export class StorageService {
   }
 
   async search(name, userid) {
-    let form = JSON.stringify({ "search": name, "userid": userid});
+    let form = JSON.stringify({ "search": name, "userid": userid });
     return await fetch(this.base_url + '/search', {
       method: "POST",
       body: form,
@@ -92,7 +76,34 @@ export class StorageService {
     }).then(res => res.json());
   }
 
-  user() {
-    return this.http.get(this.base_url + '/user', this.options);
+
+
+  //Ranking
+  async photosRaking() {
+    return await fetch(this.base_url + '/ranking/photos', this.options).then(res => res.json());
+  }
+  async userRaking() {
+    return await fetch(this.base_url + '/ranking/users', this.options).then(res => res.json());
+  }
+
+
+
+  //Photo management
+  upload(file, userid, title, description, username) {
+    let formData: FormData = new FormData();
+    formData.append('photo', file);
+    formData.append('userid', userid);
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('username', username);
+    return this.http.post(this.base_url + '/upload', formData, this.options);
+  }
+
+  vote(vote, idphoto, iduser) {
+    return this.http.post(this.base_url + '/vote', { vote, idphoto, iduser }, this.options);
+  }
+
+  deletePhoto(idphoto) {
+    return this.http.post(this.base_url + '/deletephoto', { idphoto }, this.options);
   }
 }
