@@ -18,3 +18,7 @@ h2{
   margin-top: 5px;
 }
 
+.wordwrap{
+  word-wrap: break-word;
+}
+
